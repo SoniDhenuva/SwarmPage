@@ -34,22 +34,182 @@
         .pulse-particle {
             animation: pulse-glow ease-in-out infinite;
         }
+
+        /* EVA Robot Styles */
+        .eva-loader-container {
+            position: fixed;
+            bottom: 20px;
+            right: 5px;
+            z-index: 9999;
+            pointer-events: none;
+            transform: scale(0.75);
+            transform-origin: bottom right;
+        }
+        .modelViewPort {
+            perspective: 1000px;
+            width: 20rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            overflow: hidden;
+        }
+        .eva {
+            --EVA-ROTATION-DURATION: 4s;
+            transform-style: preserve-3d;
+            animation: rotateRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+        .head {
+            position: relative;
+            width: 6rem;
+            height: 4rem;
+            border-radius: 48% 53% 45% 55% / 79% 79% 20% 22%;
+            background: linear-gradient(to right, white 45%, gray);
+        }
+        .eyeChamber {
+            width: 4.5rem;
+            height: 2.75rem;
+            position: relative;
+            left: 50%;
+            top: 55%;
+            border-radius: 45% 53% 45% 48% / 62% 59% 35% 34%;
+            background-color: #0c203c;
+            box-shadow: 0px 0px 2px 2px white, inset 0px 0px 0px 2px black;
+            transform: translate(-50%, -50%);
+            animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+        .eye {
+            width: 1.2rem;
+            height: 1.5rem;
+            position: absolute;
+            border-radius: 50%;
+        }
+        .eye:first-child {
+            left: 12px;
+            top: 50%;
+            background: repeating-linear-gradient(65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px);
+            box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
+            transform: translate(0, -50%) rotate(-65deg);
+        }
+        .eye:nth-child(2) {
+            right: 12px;
+            top: 50%;
+            background: repeating-linear-gradient(-65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px);
+            box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
+            transform: translate(0, -50%) rotate(65deg);
+        }
+        .body {
+            width: 6rem;
+            height: 8rem;
+            position: relative;
+            margin-block-start: 0.25rem;
+            border-radius: 47% 53% 45% 55% / 12% 9% 90% 88%;
+            background: linear-gradient(to right, white 35%, gray);
+        }
+        .hand {
+            position: absolute;
+            left: -1.5rem;
+            top: 0.75rem;
+            width: 2rem;
+            height: 5.5rem;
+            border-radius: 40%;
+            background: linear-gradient(to left, white 15%, gray);
+            box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.25);
+            transform: rotateY(55deg) rotateZ(10deg);
+        }
+        .hand:first-child {
+            animation: compensateRotation var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+        .hand:nth-child(2) {
+            left: 92%;
+            background: linear-gradient(to right, white 15%, gray);
+            transform: rotateY(55deg) rotateZ(-10deg);
+            animation: compensateRotationRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+        .scannerThing {
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 60%;
+            top: 10%;
+            border-top: 180px solid #9bdaeb;
+            border-left: 250px solid transparent;
+            border-right: 250px solid transparent;
+            transform-origin: top left;
+            mask: linear-gradient(to right, white, transparent 35%);
+            animation: glow 2s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+        }
+        .scannerOrigin {
+            position: absolute;
+            width: 8px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            left: 60%;
+            top: 10%;
+            background: #9bdaeb;
+            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+            animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite;
+        }
+        @keyframes rotateRight {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(25deg); }
+        }
+        @keyframes moveRight {
+            from { transform: translate(-50%, -50%); }
+            to { transform: translate(-40%, -50%); }
+        }
+        @keyframes compensateRotation {
+            from { transform: rotateY(55deg) rotateZ(10deg); }
+            to { transform: rotatey(30deg) rotateZ(10deg); }
+        }
+        @keyframes compensateRotationRight {
+            from { transform: rotateY(55deg) rotateZ(-10deg); }
+            to { transform: rotateY(70deg) rotateZ(-10deg); }
+        }
+        @keyframes glow {
+            from { opacity: 0; }
+            20% { opacity: 1; }
+            45% { transform: rotate(-25deg); }
+            75% { transform: rotate(5deg); }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-white overflow-x-hidden">
     
+    <!-- EVA Robot Loader -->
+    <div class="eva-loader-container">
+        <div class="loader">
+            <div class="modelViewPort">
+                <div class="eva">
+                    <div class="head">
+                        <div class="eyeChamber">
+                            <div class="eye"></div>
+                            <div class="eye"></div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="hand"></div>
+                        <div class="hand"></div>
+                        <div class="scannerThing"></div>
+                        <div class="scannerOrigin"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <div class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Animated background -->
         <div class="absolute inset-0">
             <img src="55fff06d-b91f-49d4-928e-d7d7f34d97c5.jpg" alt="Drones fighting wildfire" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900"></div>
         </div>
 
-        <!-- Floating drones -->
         <div id="floatingDrones" class="absolute inset-0 pointer-events-none"></div>
 
-        <!-- Hero Content -->
         <div id="heroContent" class="relative z-10 text-center px-6 max-w-5xl">
             <div class="inline-block px-4 py-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full mb-6">
                 <span class="text-orange-300 text-sm font-semibold tracking-wider">NEXT-GEN FIREFIGHTING</span>
@@ -65,7 +225,6 @@
             </button>
         </div>
 
-        <!-- Scroll indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
             <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
                 <div class="w-1.5 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
@@ -85,7 +244,6 @@
                 </p>
             </div>
 
-            <!-- Feature Cards -->
             <div class="grid md:grid-cols-3 gap-8 mb-24">
                 <div class="group bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl border border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
                     <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300">
@@ -124,7 +282,6 @@
                 </div>
             </div>
 
-            <!-- Stats Section -->
             <div class="grid md:grid-cols-4 gap-6 mb-24">
                 <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 p-6 rounded-xl border border-orange-500/20">
                     <div class="text-4xl font-bold text-orange-400 mb-2">10x</div>
@@ -144,7 +301,6 @@
                 </div>
             </div>
 
-            <!-- Technology Highlights -->
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-6">
                     <div class="flex gap-4">
@@ -198,7 +354,7 @@
         </div>
     </div>
 
-<!-- Simulation Section -->
+    <!-- Simulation Section -->
     <div class="relative py-24 px-6 bg-slate-900">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
@@ -210,18 +366,14 @@
                 </p>
             </div>
 
-            <!-- Simulation Container -->
             <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border-2 border-slate-700 overflow-hidden shadow-2xl">
                 <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-red-500 to-purple-500"></div>
                 
-                <!-- Simulation Box -->
                 <div id="simulationArea" class="relative w-full h-[600px] bg-black">
                     <canvas id="simCanvas" class="w-full h-full"></canvas>
                 </div>
 
-                <!-- Control Panel -->
                 <div class="border-t border-slate-700 bg-slate-900/50 backdrop-blur-sm p-6">
-                    <!-- Parameter Sliders -->
                     <div class="grid md:grid-cols-3 gap-6 mb-6">
                         <div class="bg-slate-800/50 p-4 rounded-lg">
                             <label class="block text-sm font-semibold text-gray-300 mb-2">
@@ -260,7 +412,6 @@
                         </div>
                     </div>
                     
-                    <!-- Control Buttons -->
                     <div class="flex flex-wrap gap-4 justify-center items-center">
                         <button id="startBtn" class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg shadow-green-500/25">
                             Start Simulation
@@ -271,21 +422,45 @@
                         <button id="resetBtn" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold transition-all duration-300">
                             Reset
                         </button>
-                        <div class="flex items-center gap-3 px-6 py-3 bg-slate-800 rounded-lg">
-                            <span class="text-gray-400">Drones:</span>
-                            <span id="droneCount" class="font-bold text-blue-400">0</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
+                            <span class="text-gray-400">Step:</span>
+                            <span id="stepCount" class="font-bold text-cyan-400">0</span>
                         </div>
-                        <div class="flex items-center gap-3 px-6 py-3 bg-slate-800 rounded-lg">
+                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
                             <span class="text-gray-400">Fires:</span>
                             <span id="fireCount" class="font-bold text-orange-400">0</span>
                         </div>
+                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
+                            <span class="text-gray-400">Extinguished:</span>
+                            <span id="extinguishedCount" class="font-bold text-green-400">0</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
+                            <span class="text-gray-400">Diversity:</span>
+                            <span id="diversityValue" class="font-bold text-purple-400">0.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 p-4 bg-slate-800/50 rounded-lg">
+                        <div class="text-sm text-gray-400 mb-2">Current PSO Parameters:</div>
+                        <div class="flex flex-wrap gap-4 justify-center text-sm">
+                            <span class="text-orange-400">ω = <span id="currentOmega">0.70</span></span>
+                            <span class="text-blue-400">φₚ = <span id="currentPhip">2.00</span></span>
+                            <span class="text-purple-400">φᵍ = <span id="currentPhig">2.00</span></span>
+                            <span class="text-yellow-400">Reward = <span id="rewardValue">0.0000</span></span>
+                        </div>
+                    </div>
+                    
+                    <div id="deployMessage" class="mt-4 p-3 bg-blue-500/20 border border-blue-500/30 rounded-lg text-blue-300 text-center hidden">
+                        🚁 Drones will deploy at step 10...
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="relative py-12 px-6 bg-black border-t border-slate-800">
         <div class="max-w-7xl mx-auto text-center text-gray-500">
             <p>© 2025 Swarm Intelligence Systems. Next-generation wildfire response technology.</p>
@@ -315,12 +490,16 @@
         // Environment and simulation state
         const GRID_WIDTH = 40;
         const GRID_HEIGHT = 20;
-        const CELL_SIZE = canvas.width / GRID_WIDTH;
         
         let grid = [];
         let fires = [];
         let drones = [];
         const NUM_DRONES = 20;
+        let currentStep = 0;
+        let totalExtinguished = 0;
+        let dronesDeployed = false;
+        const DEPLOY_STEP = 10;
+        let frameCount = 0;
 
         // Initialize grid
         function initGrid() {
@@ -354,13 +533,14 @@
                 }
             }
             
-            // Start some fires
+            // Start some fires in the center area
             fires = [];
             for (let i = 0; i < 5; i++) {
                 const x = Math.floor(Math.random() * (GRID_WIDTH / 3)) + GRID_WIDTH / 3;
                 const y = Math.floor(Math.random() * (GRID_HEIGHT / 3)) + GRID_HEIGHT / 3;
-                if (grid[y][x].tree) {
+                if (grid[y] && grid[y][x] && grid[y][x].tree) {
                     grid[y][x].fire = true;
+                    grid[y][x].fire_cooldown = 3;
                     fires.push({x, y, cooldown: 3});
                 }
             }
@@ -381,6 +561,8 @@
                     firesExtinguished: 0
                 });
             }
+            dronesDeployed = true;
+            document.getElementById('deployMessage').classList.add('hidden');
         }
 
         // Calculate fitness for a position
@@ -392,22 +574,18 @@
                 return 1e6;
             }
             
-            // If on fire, very good position
             if (grid[iy][ix].fire) {
                 return -100;
             }
             
-            // If on water, good for refilling
             if (grid[iy][ix].water) {
                 return -10;
             }
             
-            // If burnt, bad position
             if (grid[iy][ix].burnt) {
                 return 1000;
             }
             
-            // Otherwise, distance to nearest fire
             let minDist = Infinity;
             for (const fire of fires) {
                 const dist = Math.sqrt((fire.x - x) ** 2 + (fire.y - y) ** 2);
@@ -432,7 +610,6 @@
                 }
             }
             
-            // If no good position found, target first fire
             if (fires.length > 0 && bestFitness > 0) {
                 bestX = fires[0].x;
                 bestY = fires[0].y;
@@ -443,23 +620,23 @@
 
         // Update drones using PSO
         function updateDrones() {
+            if (!dronesDeployed) return 0;
+            
             const gbest = findBestPosition();
+            let extinguishedThisStep = 0;
             
             for (let drone of drones) {
                 const rp = Math.random();
                 const rg = Math.random();
                 
-                // Calculate current fitness
                 const currentFitness = calculateFitness(drone.x, drone.y);
                 
-                // Update personal best
                 if (currentFitness < drone.pbestFitness) {
                     drone.pbestX = drone.x;
                     drone.pbestY = drone.y;
                     drone.pbestFitness = currentFitness;
                 }
                 
-                // PSO velocity update with user-controlled parameters
                 drone.vx = omega * drone.vx + 
                           phip * rp * (drone.pbestX - drone.x) + 
                           phig * rg * (gbest.x - drone.x);
@@ -468,27 +645,23 @@
                           phip * rp * (drone.pbestY - drone.y) + 
                           phig * rg * (gbest.y - drone.y);
                 
-                // Add small random noise
                 drone.vx += (Math.random() - 0.5) * 0.3;
                 drone.vy += (Math.random() - 0.5) * 0.3;
                 
-                // Limit velocity
-                const maxVel = 1.5;
+                const maxVel = 0.8;
                 const vel = Math.sqrt(drone.vx ** 2 + drone.vy ** 2);
                 if (vel > maxVel) {
                     drone.vx = (drone.vx / vel) * maxVel;
                     drone.vy = (drone.vy / vel) * maxVel;
                 }
                 
-                // Update position
                 drone.x += drone.vx;
                 drone.y += drone.vy;
                 
-                // Boundary checks
                 drone.x = Math.max(0, Math.min(GRID_WIDTH - 1, drone.x));
                 drone.y = Math.max(0, Math.min(GRID_HEIGHT - 1, drone.y));
                 
-                // Extinguish nearby fires (3x3 area)
+                // Extinguish nearby fires (3x3 area, max 3 per drone per step)
                 const ix = Math.floor(drone.x);
                 const iy = Math.floor(drone.y);
                 let extinguished = 0;
@@ -501,14 +674,50 @@
                                 grid[ny][nx].fire = false;
                                 grid[ny][nx].burnt = true;
                                 grid[ny][nx].tree = false;
+                                grid[ny][nx].fire_cooldown = 0;
                                 grid[ny][nx].extinguishedByDrone = true;
                                 extinguished++;
+                                extinguishedThisStep++;
                                 drone.firesExtinguished++;
+                                
+                                // Remove from fires array
+                                const fireIndex = fires.findIndex(f => f.x === nx && f.y === ny);
+                                if (fireIndex !== -1) {
+                                    fires.splice(fireIndex, 1);
+                                }
                             }
                         }
                     }
                 }
+                
+                // Refuel after extinguishing 3 fires
+                if (drone.firesExtinguished >= 3) {
+                    drone.firesExtinguished = 0;
+                }
             }
+            
+            return extinguishedThisStep;
+        }
+
+        // Calculate swarm diversity
+        function calculateDiversity() {
+            if (drones.length === 0) return 0;
+            
+            const avgX = drones.reduce((sum, d) => sum + d.x, 0) / drones.length;
+            const avgY = drones.reduce((sum, d) => sum + d.y, 0) / drones.length;
+            
+            const variance = drones.reduce((sum, d) => {
+                return sum + Math.pow(d.x - avgX, 2) + Math.pow(d.y - avgY, 2);
+            }, 0) / drones.length;
+            
+            return Math.sqrt(variance);
+        }
+
+        // Calculate reward
+        function calculateReward(extinguished, diversity) {
+            let reward = extinguished * 0.1;
+            reward += diversity * 0.01;
+            return reward;
         }
 
         // Spread fire
@@ -517,54 +726,70 @@
             const stillActive = [];
             
             for (let fire of fires) {
-                // Check if fire still exists
-                if (!grid[fire.y][fire.x].fire) {
+                // Check if this fire cell still exists and is burning
+                if (!grid[fire.y] || !grid[fire.y][fire.x] || !grid[fire.y][fire.x].fire) {
                     continue;
                 }
                 
-                if (fire.cooldown > 0) {
-                    fire.cooldown--;
+                const cell = grid[fire.y][fire.x];
+                
+                // Decrement cooldown
+                if (cell.fire_cooldown > 0) {
+                    cell.fire_cooldown--;
                     stillActive.push(fire);
                     continue;
                 }
                 
-                // Random burnout (3% chance)
+                // Random burnout chance (3% like Python)
                 if (Math.random() < 0.03) {
-                    grid[fire.y][fire.x].fire = false;
-                    grid[fire.y][fire.x].burnt = true;
-                    grid[fire.y][fire.x].extinguishedByDrone = false;
+                    cell.fire = false;
+                    cell.burnt = true;
+                    cell.extinguishedByDrone = false;
                     continue;
                 }
                 
-                // Spread to neighbors
-                for (let dx = -1; dx <= 1; dx++) {
-                    for (let dy = -1; dy <= 1; dy++) {
-                        if (dx === 0 && dy === 0) continue;
-                        const nx = fire.x + dx;
-                        const ny = fire.y + dy;
-                        if (nx >= 0 && nx < GRID_WIDTH && ny >= 0 && ny < GRID_HEIGHT) {
-                            const ncell = grid[ny][nx];
-                            if (ncell.tree && !ncell.fire && !ncell.water && !ncell.burnt) {
-                                let prob = 0.05; // base probability
-                                
-                                // Wind effect (assume wind is (1, 0) - right)
-                                if (dx === 1 && dy === 0) {
-                                    prob += 0.08;
-                                }
-                                
-                                if (Math.random() < prob) {
-                                    ncell.fire = true;
-                                    ncell.tree = false;
-                                    newFires.push({x: nx, y: ny, cooldown: 3});
+                // Spread fire to neighbors (only when cooldown is 0)
+                if (cell.fire_cooldown === 0) {
+                    for (let dx = -1; dx <= 1; dx++) {
+                        for (let dy = -1; dy <= 1; dy++) {
+                            if (dx === 0 && dy === 0) continue;
+                            const nx = fire.x + dx;
+                            const ny = fire.y + dy;
+                            if (nx >= 0 && nx < GRID_WIDTH && ny >= 0 && ny < GRID_HEIGHT) {
+                                const ncell = grid[ny][nx];
+                                if (ncell.tree && !ncell.fire && !ncell.water && !ncell.burnt) {
+                                    let base_prob = 0.05; // 5% base
+                                    
+                                    // Wind effect - spreads to the right
+                                    if (dx === 1 && dy === 0) {
+                                        base_prob += 0.08; // 13% total with wind
+                                    }
+                                    
+                                    if (Math.random() < Math.min(Math.max(base_prob, 0.005), 0.4)) {
+                                        ncell.fire = true;
+                                        ncell.tree = false;
+                                        ncell.fire_cooldown = 2;
+                                        newFires.push({x: nx, y: ny, cooldown: 2});
+                                    }
                                 }
                             }
                         }
                     }
+                    // Reset cooldown after spreading
+                    cell.fire_cooldown = 2;
                 }
-                fire.cooldown = 3;
+                
                 stillActive.push(fire);
             }
-            fires = stillActive.concat(newFires);
+            
+            // Update fires array - only keep fires that are still burning
+            fires = [];
+            for (let pos of stillActive) {
+                if (grid[pos.y] && grid[pos.y][pos.x] && grid[pos.y][pos.x].fire) {
+                    fires.push(pos);
+                }
+            }
+            fires = fires.concat(newFires);
         }
 
         // Draw simulation with emojis
@@ -575,30 +800,26 @@
             const cellW = canvas.width / GRID_WIDTH;
             const cellH = canvas.height / GRID_HEIGHT;
             
-            // Calculate emoji size based on cell size
             const emojiSize = Math.max(12, Math.min(cellW, cellH) * 0.8);
             ctx.font = emojiSize + 'px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             
-            // Create drone position map for quick lookup
             const dronePositions = new Set();
             for (const drone of drones) {
                 const key = Math.floor(drone.x) + ',' + Math.floor(drone.y);
                 dronePositions.add(key);
             }
             
-            // Draw cells with emojis
             for (let y = 0; y < GRID_HEIGHT; y++) {
                 for (let x = 0; x < GRID_WIDTH; x++) {
                     const centerX = x * cellW + cellW / 2;
                     const centerY = y * cellH + cellH / 2;
                     const key = x + ',' + y;
                     
-                    // Check if drone is at this position first
                     if (dronePositions.has(key)) {
                         ctx.fillText('🚁', centerX, centerY);
-                    } else {
+                    } else if (grid[y] && grid[y][x]) {
                         const cell = grid[y][x];
                         let emoji = '';
                         
@@ -620,31 +841,72 @@
                     }
                 }
             }
-            
-            // Update counters
-            document.getElementById('droneCount').textContent = drones.length;
-            document.getElementById('fireCount').textContent = fires.length;
         }
 
         // Animation loop
         function animate() {
             if (!isRunning) return;
             
+            currentStep++;
+            
+            // ALWAYS spread fire first (every step) - just like Python code
             spreadFire();
-            updateDrones();
+            
+            // Deploy drones at step 10
+            if (currentStep === DEPLOY_STEP && !dronesDeployed) {
+                initDrones();
+            }
+            
+            // Update drones only AFTER they're deployed
+            let extinguishedThisStep = 0;
+            if (dronesDeployed) {
+                extinguishedThisStep = updateDrones();
+                totalExtinguished += extinguishedThisStep;
+            }
+            
             draw();
             
-            if (fires.length === 0) {
+            const diversity = calculateDiversity();
+            const reward = calculateReward(extinguishedThisStep, diversity);
+            
+            document.getElementById('stepCount').textContent = currentStep;
+            document.getElementById('fireCount').textContent = fires.length;
+            document.getElementById('extinguishedCount').textContent = totalExtinguished;
+            document.getElementById('diversityValue').textContent = diversity.toFixed(2);
+            document.getElementById('currentOmega').textContent = omega.toFixed(2);
+            document.getElementById('currentPhip').textContent = phip.toFixed(2);
+            document.getElementById('currentPhig').textContent = phig.toFixed(2);
+            document.getElementById('rewardValue').textContent = reward.toFixed(4);
+            
+            if (currentStep < DEPLOY_STEP) {
+                document.getElementById('deployMessage').classList.remove('hidden');
+            } else {
+                document.getElementById('deployMessage').classList.add('hidden');
+            }
+            
+            frameCount++;
+            
+            // Only check for completion if drones are deployed AND all fires are out
+            if (fires.length === 0 && dronesDeployed && currentStep > DEPLOY_STEP) {
                 isRunning = false;
                 setTimeout(() => {
-                    alert('🎉 All fires extinguished!');
-                }, 100);
+                    alert(`🎉 All fires extinguished! Simulation complete.\n\nStep: ${currentStep}\nTotal Extinguished: ${totalExtinguished}\nFinal Diversity: ${diversity.toFixed(2)}`);
+                }, 500);
                 return;
             }
             
+            if (currentStep >= 300) {
+                isRunning = false;
+                setTimeout(() => {
+                    alert(`⚠️ Simulation ended: Max steps reached.\n\nFires Remaining: ${fires.length}\nTotal Extinguished: ${totalExtinguished}`);
+                }, 500);
+                return;
+            }
+            
+            // Slow down animation to see each step clearly (like terminal output)
             setTimeout(() => {
                 animationId = requestAnimationFrame(animate);
-            }, 250); // 250ms = 4 frames per second, like watching terminal output
+            }, 250); // 4 steps per second, matching terminal speed
         }
 
         // Slider event listeners
@@ -666,9 +928,6 @@
         // Button controls
         document.getElementById('startBtn').addEventListener('click', function() {
             if (!isRunning) {
-                if (drones.length === 0) {
-                    initDrones();
-                }
                 isRunning = true;
                 animate();
             }
@@ -686,14 +945,25 @@
             if (animationId) {
                 cancelAnimationFrame(animationId);
             }
+            currentStep = 0;
+            totalExtinguished = 0;
+            dronesDeployed = false;
+            frameCount = 0;
             initGrid();
-            initDrones();
+            drones = [];
             draw();
+            
+            document.getElementById('stepCount').textContent = '0';
+            document.getElementById('extinguishedCount').textContent = '0';
+            document.getElementById('diversityValue').textContent = '0.00';
+            document.getElementById('rewardValue').textContent = '0.0000';
+            document.getElementById('deployMessage').classList.remove('hidden');
         });
 
         // Initialize
         initGrid();
         draw();
+        document.getElementById('deployMessage').classList.remove('hidden');
 
         // Generate floating drones for hero section
         const dronesContainer = document.getElementById('floatingDrones');
@@ -718,222 +988,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-<!-- Loader HTML -->
-<div class="eva-loader-container">
-  <div class="loader">
-    <div class="modelViewPort">
-      <div class="eva">
-        <div class="head">
-          <div class="eyeChamber">
-            <div class="eye"></div>
-            <div class="eye"></div>
-          </div>
-        </div>
-        <div class="body">
-          <div class="hand"></div>
-          <div class="hand"></div>
-          <div class="scannerThing"></div>
-          <div class="scannerOrigin"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CSS to position it bottom-right -->
-<style>
-.eva-loader-container {
-  position: fixed;
-  bottom: 20px;
-  right: 5px;
-  z-index: 9999;
-  pointer-events: none;
-  
-  /* SCALE THE ENTIRE ROBOT */
-  transform: scale(0.75); /* 50% of original size */
-  transform-origin: bottom right; /* scale from bottom-right corner */
-}
-
-
-/* From Uiverse.io by Subaashbala */ 
-.modelViewPort {
-  /* The black circle background around the model*/
-  perspective: 1000px;
-  width: 20rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  overflow: hidden;
-}
-.eva {
-  --EVA-ROTATION-DURATION: 4s;
-  transform-style: preserve-3d;
-  animation: rotateRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
-}
-.head {
-  position: relative;
-  width: 6rem;
-  height: 4rem;
-  border-radius: 48% 53% 45% 55% / 79% 79% 20% 22%;
-  background: linear-gradient(to right, white 45%, gray);
-}
-.eyeChamber {
-  width: 4.5rem;
-  height: 2.75rem;
-  position: relative;
-  left: 50%;
-  top: 55%;
-  border-radius: 45% 53% 45% 48% / 62% 59% 35% 34%;
-  background-color: #0c203c;
-  box-shadow: 0px 0px 2px 2px white, inset 0px 0px 0px 2px black;
-  transform: translate(-50%, -50%);
-  animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
-}
-.eye {
-  width: 1.2rem;
-  height: 1.5rem;
-  position: absolute;
-  border-radius: 50%;
-}
-.eye:first-child {
-  left: 12px;
-  top: 50%;
-  background: repeating-linear-gradient(
-    65deg,
-    #9bdaeb 0px,
-    #9bdaeb 1px,
-    white 2px
-  );
-  box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
-  transform: translate(0, -50%) rotate(-65deg);
-}
-.eye:nth-child(2) {
-  right: 12px;
-  top: 50%;
-  background: repeating-linear-gradient(
-    -65deg,
-    #9bdaeb 0px,
-    #9bdaeb 1px,
-    white 2px
-  );
-  box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
-  transform: translate(0, -50%) rotate(65deg);
-}
-.body {
-  width: 6rem;
-  height: 8rem;
-  position: relative;
-  margin-block-start: 0.25rem;
-  border-radius: 47% 53% 45% 55% / 12% 9% 90% 88%;
-  background: linear-gradient(to right, white 35%, gray);
-}
-.hand {
-  position: absolute;
-  left: -1.5rem;
-  top: 0.75rem;
-  width: 2rem;
-  height: 5.5rem;
-  border-radius: 40%;
-  background: linear-gradient(to left, white 15%, gray);
-  box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.25);
-  transform: rotateY(55deg) rotateZ(10deg);
-}
-.hand:first-child {
-  animation: compensateRotation var(--EVA-ROTATION-DURATION) linear infinite
-    alternate;
-}
-.hand:nth-child(2) {
-  left: 92%;
-  background: linear-gradient(to right, white 15%, gray);
-  transform: rotateY(55deg) rotateZ(-10deg);
-  animation: compensateRotationRight var(--EVA-ROTATION-DURATION) linear
-    infinite alternate;
-}
-.scannerThing {
-  width: 0;
-  height: 0;
-  position: absolute;
-  left: 60%;
-  top: 10%;
-  border-top: 180px solid #9bdaeb;
-  border-left: 250px solid transparent;
-  border-right: 250px solid transparent;
-  transform-origin: top left;
-  mask: linear-gradient(to right, white, transparent 35%);
-  animation: glow 2s cubic-bezier(0.86, 0, 0.07, 1) infinite;
-}
-.scannerOrigin {
-  position: absolute;
-  width: 8px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  left: 60%;
-  top: 10%;
-  background: #9bdaeb;
-  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
-  animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite;
-}
-@keyframes rotateRight {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(25deg);
-  }
-}
-@keyframes moveRight {
-  from {
-    transform: translate(-50%, -50%);
-  }
-  to {
-    transform: translate(-40%, -50%);
-  }
-}
-@keyframes compensateRotation {
-  from {
-    transform: rotateY(55deg) rotateZ(10deg);
-  }
-  to {
-    transform: rotatey(30deg) rotateZ(10deg);
-  }
-}
-@keyframes compensateRotationRight {
-  from {
-    transform: rotateY(55deg) rotateZ(-10deg);
-  }
-  to {
-    transform: rotateY(70deg) rotateZ(-10deg);
-  }
-}
-@keyframes glow {
-  from {
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  45% {
-    transform: rotate(-25deg);
-  }
-  75% {
-    transform: rotate(5deg);
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-</style>
