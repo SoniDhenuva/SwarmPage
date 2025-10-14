@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Swarm Wildfire Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0% { 
+                transform: translateY(0px) translateX(0px); 
+            }
+            50% { 
+                transform: translateY(-20px) translateX(10px); 
+            }
+            100% {
+                transform: translateY(0px) translateX(0px); 
+            }
+        }
+        @keyframes pulse-glow {
+            0% { 
+                opacity: 0.3; 
+            }
+            50% { 
+                opacity: 0.6; 
+            }
+            100% {
+                opacity: 0.3; 
+            }
+        }
+        .float-animation {
+            animation: float ease-in-out infinite;
+        }
+        .pulse-particle {
+            animation: pulse-glow ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white overflow-x-hidden">
+    
+    <!-- Hero Section -->
+    <div class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Animated background -->
+        <div class="absolute inset-0">
+            <img src="55fff06d-b91f-49d4-928e-d7d7f34d97c5.jpg" alt="Drones fighting wildfire" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900"></div>
+        </div>
+
+        <!-- Floating drones -->
+        <div id="floatingDrones" class="absolute inset-0 pointer-events-none"></div>
+
+        <!-- Hero Content -->
+        <div id="heroContent" class="relative z-10 text-center px-6 max-w-5xl">
+            <div class="inline-block px-4 py-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full mb-6">
+                <span class="text-orange-300 text-sm font-semibold tracking-wider">NEXT-GEN FIREFIGHTING</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-orange-100 to-red-200 bg-clip-text text-transparent">
+                Swarm Intelligence
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Autonomous drone networks that coordinate in real-time to combat wildfires with unprecedented efficiency
+            </p>
+            <button class="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 rounded-full font-semibold text-lg shadow-2xl shadow-orange-500/50 hover:shadow-orange-500/70 transform hover:scale-105 transition-all duration-300">
+                Explore Technology
+            </button>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1.5 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="relative py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+                    How It Works
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Distributed intelligence meets wildfire response. Our swarm technology enables drones to operate as a unified, adaptive system.
+                </p>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="grid md:grid-cols-3 gap-8 mb-24">
+                <div class="group bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl border border-slate-700 hover:border-orange-500/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Mesh Networking</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Each drone communicates with nearby units, creating a resilient network that adapts to changing conditions and maintains coordination even with individual unit failures.
+                    </p>
+                </div>
+
+                <div class="group bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl border border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Precision Targeting</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Advanced sensors detect heat signatures and fire intensity, allowing the swarm to prioritize high-risk areas and deploy water or retardant with surgical precision.
+                    </p>
+                </div>
+
+                <div class="group bg-gradient-to-br from-slate-800 to-slate-900 p-8 rounded-2xl border border-slate-700 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Real-Time Adaptation</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        AI algorithms continuously analyze fire behavior, wind patterns, and terrain to optimize swarm positioning and resource allocation in milliseconds.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="grid md:grid-cols-4 gap-6 mb-24">
+                <div class="bg-gradient-to-br from-orange-500/10 to-red-500/10 p-6 rounded-xl border border-orange-500/20">
+                    <div class="text-4xl font-bold text-orange-400 mb-2">10x</div>
+                    <div class="text-gray-400">Faster Response</div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 p-6 rounded-xl border border-blue-500/20">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">85%</div>
+                    <div class="text-gray-400">Resource Efficiency</div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-6 rounded-xl border border-purple-500/20">
+                    <div class="text-4xl font-bold text-purple-400 mb-2">24/7</div>
+                    <div class="text-gray-400">Autonomous Operation</div>
+                </div>
+                <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 p-6 rounded-xl border border-green-500/20">
+                    <div class="text-4xl font-bold text-green-400 mb-2">100+</div>
+                    <div class="text-gray-400">Drones Per Swarm</div>
+                </div>
+            </div>
+
+            <!-- Technology Highlights -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Autonomous Navigation</h4>
+                            <p class="text-gray-400">GPS-denied operation using visual odometry and SLAM technology for reliable navigation in smoke-filled environments.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Distributed Computing</h4>
+                            <p class="text-gray-400">Each drone processes data locally while sharing insights with the swarm, eliminating single points of failure.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Thermal Imaging</h4>
+                            <p class="text-gray-400">High-resolution infrared cameras detect fire hotspots and track fire spread patterns in real-time.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Energy Optimization</h4>
+                            <p class="text-gray-400">Smart battery management and coordinated charging stations ensure continuous coverage during extended operations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Simulation Section -->
+    <div class="relative py-24 px-6 bg-slate-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
+                    Live Simulation
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Watch how our swarm technology coordinates to suppress wildfire threats
+                </p>
+            </div>
+
+            <!-- Simulation Container -->
+            <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border-2 border-slate-700 overflow-hidden shadow-2xl">
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-red-500 to-purple-500"></div>
+                
+                <!-- Simulation Box -->
+                <div id="simulationArea" class="relative w-full h-[600px] bg-black">
+                    <canvas id="simCanvas" class="w-full h-full"></canvas>
+                </div>
+
+                <!-- Control Panel -->
+                <div class="border-t border-slate-700 bg-slate-900/50 backdrop-blur-sm p-6">
+                    <!-- Parameter Sliders -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-slate-800/50 p-4 rounded-lg">
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">
+                                Omega (ω) - Inertia: <span id="omegaValue" class="text-orange-400">0.7</span>
+                            </label>
+                            <input type="range" id="omegaSlider" min="0.1" max="1.0" step="0.1" value="0.7" 
+                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-orange-500">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>0.1</span>
+                                <span>1.0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-800/50 p-4 rounded-lg">
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">
+                                Phi P (φₚ) - Personal: <span id="phipValue" class="text-blue-400">2.0</span>
+                            </label>
+                            <input type="range" id="phipSlider" min="0.5" max="3.0" step="0.1" value="2.0" 
+                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>0.5</span>
+                                <span>3.0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-800/50 p-4 rounded-lg">
+                            <label class="block text-sm font-semibold text-gray-300 mb-2">
+                                Phi G (φᵍ) - Global: <span id="phigValue" class="text-purple-400">2.0</span>
+                            </label>
+                            <input type="range" id="phigSlider" min="0.5" max="3.0" step="0.1" value="2.0" 
+                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-purple-500">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>0.5</span>
+                                <span>3.0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Control Buttons -->
+                    <div class="flex flex-wrap gap-4 justify-center items-center">
+                        <button id="startBtn" class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg shadow-green-500/25">
+                            Start Simulation
+                        </button>
+                        <button id="stopBtn" class="px-6 py-3 bg-gradient-to-r from-red-500 to-orange-600 rounded-lg font-semibold hover:from-red-600 hover:to-orange-700 transition-all duration-300 shadow-lg shadow-red-500/25">
+                            Stop
+                        </button>
+                        <button id="resetBtn" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold transition-all duration-300">
+                            Reset
+                        </button>
+                        <div class="flex items-center gap-3 px-6 py-3 bg-slate-800 rounded-lg">
+                            <span class="text-gray-400">Drones:</span>
+                            <span id="droneCount" class="font-bold text-blue-400">0</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-6 py-3 bg-slate-800 rounded-lg">
+                            <span class="text-gray-400">Fires:</span>
+                            <span id="fireCount" class="font-bold text-orange-400">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="relative py-12 px-6 bg-black border-t border-slate-800">
+        <div class="max-w-7xl mx-auto text-center text-gray-500">
+            <p>© 2025 Swarm Intelligence Systems. Next-generation wildfire response technology.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simulation Parameters
+        let omega = 0.7;
+        let phip = 2.0;
+        let phig = 2.0;
+        let isRunning = false;
+        let animationId = null;
+
+        // Canvas setup
+        const canvas = document.getElementById('simCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            const container = document.getElementById('simulationArea');
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Environment and simulation state
+        const GRID_WIDTH = 40;
+        const GRID_HEIGHT = 20;
+        const CELL_SIZE = canvas.width / GRID_WIDTH;
+        
+        let grid = [];
+        let fires = [];
+        let drones = [];
+        const NUM_DRONES = 20;
+
+        // Initialize grid
+        function initGrid() {
+            grid = [];
+            for (let y = 0; y < GRID_HEIGHT; y++) {
+                grid[y] = [];
+                for (let x = 0; x < GRID_WIDTH; x++) {
+                    grid[y][x] = {
+                        tree: true,
+                        fire: false,
+                        burnt: false,
+                        water: false,
+                        extinguishedByDrone: false
+                    };
+                }
+            }
+            
+            // Add water blobs
+            for (let i = 0; i < 3; i++) {
+                const cx = Math.floor(Math.random() * (GRID_WIDTH - 10)) + 5;
+                const cy = Math.floor(Math.random() * (GRID_HEIGHT - 10)) + 5;
+                const steps = Math.floor(Math.random() * 15) + 15;
+                let x = cx, y = cy;
+                for (let s = 0; s < steps; s++) {
+                    if (x >= 0 && x < GRID_WIDTH && y >= 0 && y < GRID_HEIGHT) {
+                        grid[y][x].water = true;
+                        grid[y][x].tree = false;
+                    }
+                    x += Math.floor(Math.random() * 3) - 1;
+                    y += Math.floor(Math.random() * 3) - 1;
+                }
+            }
+            
+            // Start some fires
+            fires = [];
+            for (let i = 0; i < 5; i++) {
+                const x = Math.floor(Math.random() * (GRID_WIDTH / 3)) + GRID_WIDTH / 3;
+                const y = Math.floor(Math.random() * (GRID_HEIGHT / 3)) + GRID_HEIGHT / 3;
+                if (grid[y][x].tree) {
+                    grid[y][x].fire = true;
+                    fires.push({x, y, cooldown: 3});
+                }
+            }
+        }
+
+        // Initialize drones
+        function initDrones() {
+            drones = [];
+            for (let i = 0; i < NUM_DRONES; i++) {
+                drones.push({
+                    x: Math.random() * GRID_WIDTH,
+                    y: Math.random() * GRID_HEIGHT,
+                    vx: (Math.random() - 0.5) * 3,
+                    vy: (Math.random() - 0.5) * 3,
+                    pbestX: GRID_WIDTH / 2,
+                    pbestY: GRID_HEIGHT / 2,
+                    pbestFitness: Infinity,
+                    firesExtinguished: 0
+                });
+            }
+        }
+
+        // Calculate fitness for a position
+        function calculateFitness(x, y) {
+            const ix = Math.floor(x);
+            const iy = Math.floor(y);
+            
+            if (ix < 0 || ix >= GRID_WIDTH || iy < 0 || iy >= GRID_HEIGHT) {
+                return 1e6;
+            }
+            
+            // If on fire, very good position
+            if (grid[iy][ix].fire) {
+                return -100;
+            }
+            
+            // If on water, good for refilling
+            if (grid[iy][ix].water) {
+                return -10;
+            }
+            
+            // If burnt, bad position
+            if (grid[iy][ix].burnt) {
+                return 1000;
+            }
+            
+            // Otherwise, distance to nearest fire
+            let minDist = Infinity;
+            for (const fire of fires) {
+                const dist = Math.sqrt((fire.x - x) ** 2 + (fire.y - y) ** 2);
+                minDist = Math.min(minDist, dist);
+            }
+            
+            return minDist;
+        }
+
+        // Find best position (global best)
+        function findBestPosition() {
+            let bestX = GRID_WIDTH / 2;
+            let bestY = GRID_HEIGHT / 2;
+            let bestFitness = Infinity;
+            
+            for (const drone of drones) {
+                const fitness = calculateFitness(drone.x, drone.y);
+                if (fitness < bestFitness) {
+                    bestFitness = fitness;
+                    bestX = drone.x;
+                    bestY = drone.y;
+                }
+            }
+            
+            // If no good position found, target first fire
+            if (fires.length > 0 && bestFitness > 0) {
+                bestX = fires[0].x;
+                bestY = fires[0].y;
+            }
+            
+            return {x: bestX, y: bestY};
+        }
+
+        // Update drones using PSO
+        function updateDrones() {
+            const gbest = findBestPosition();
+            
+            for (let drone of drones) {
+                const rp = Math.random();
+                const rg = Math.random();
+                
+                // Calculate current fitness
+                const currentFitness = calculateFitness(drone.x, drone.y);
+                
+                // Update personal best
+                if (currentFitness < drone.pbestFitness) {
+                    drone.pbestX = drone.x;
+                    drone.pbestY = drone.y;
+                    drone.pbestFitness = currentFitness;
+                }
+                
+                // PSO velocity update with user-controlled parameters
+                drone.vx = omega * drone.vx + 
+                          phip * rp * (drone.pbestX - drone.x) + 
+                          phig * rg * (gbest.x - drone.x);
+                          
+                drone.vy = omega * drone.vy + 
+                          phip * rp * (drone.pbestY - drone.y) + 
+                          phig * rg * (gbest.y - drone.y);
+                
+                // Add small random noise
+                drone.vx += (Math.random() - 0.5) * 0.3;
+                drone.vy += (Math.random() - 0.5) * 0.3;
+                
+                // Limit velocity
+                const maxVel = 1.5;
+                const vel = Math.sqrt(drone.vx ** 2 + drone.vy ** 2);
+                if (vel > maxVel) {
+                    drone.vx = (drone.vx / vel) * maxVel;
+                    drone.vy = (drone.vy / vel) * maxVel;
+                }
+                
+                // Update position
+                drone.x += drone.vx;
+                drone.y += drone.vy;
+                
+                // Boundary checks
+                drone.x = Math.max(0, Math.min(GRID_WIDTH - 1, drone.x));
+                drone.y = Math.max(0, Math.min(GRID_HEIGHT - 1, drone.y));
+                
+                // Extinguish nearby fires (3x3 area)
+                const ix = Math.floor(drone.x);
+                const iy = Math.floor(drone.y);
+                let extinguished = 0;
+                for (let dx = -1; dx <= 1 && extinguished < 3; dx++) {
+                    for (let dy = -1; dy <= 1 && extinguished < 3; dy++) {
+                        const nx = ix + dx;
+                        const ny = iy + dy;
+                        if (nx >= 0 && nx < GRID_WIDTH && ny >= 0 && ny < GRID_HEIGHT) {
+                            if (grid[ny][nx].fire) {
+                                grid[ny][nx].fire = false;
+                                grid[ny][nx].burnt = true;
+                                grid[ny][nx].tree = false;
+                                grid[ny][nx].extinguishedByDrone = true;
+                                extinguished++;
+                                drone.firesExtinguished++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Spread fire
+        function spreadFire() {
+            const newFires = [];
+            const stillActive = [];
+            
+            for (let fire of fires) {
+                // Check if fire still exists
+                if (!grid[fire.y][fire.x].fire) {
+                    continue;
+                }
+                
+                if (fire.cooldown > 0) {
+                    fire.cooldown--;
+                    stillActive.push(fire);
+                    continue;
+                }
+                
+                // Random burnout (3% chance)
+                if (Math.random() < 0.03) {
+                    grid[fire.y][fire.x].fire = false;
+                    grid[fire.y][fire.x].burnt = true;
+                    grid[fire.y][fire.x].extinguishedByDrone = false;
+                    continue;
+                }
+                
+                // Spread to neighbors
+                for (let dx = -1; dx <= 1; dx++) {
+                    for (let dy = -1; dy <= 1; dy++) {
+                        if (dx === 0 && dy === 0) continue;
+                        const nx = fire.x + dx;
+                        const ny = fire.y + dy;
+                        if (nx >= 0 && nx < GRID_WIDTH && ny >= 0 && ny < GRID_HEIGHT) {
+                            const ncell = grid[ny][nx];
+                            if (ncell.tree && !ncell.fire && !ncell.water && !ncell.burnt) {
+                                let prob = 0.05; // base probability
+                                
+                                // Wind effect (assume wind is (1, 0) - right)
+                                if (dx === 1 && dy === 0) {
+                                    prob += 0.08;
+                                }
+                                
+                                if (Math.random() < prob) {
+                                    ncell.fire = true;
+                                    ncell.tree = false;
+                                    newFires.push({x: nx, y: ny, cooldown: 3});
+                                }
+                            }
+                        }
+                    }
+                }
+                fire.cooldown = 3;
+                stillActive.push(fire);
+            }
+            fires = stillActive.concat(newFires);
+        }
+
+        // Draw simulation with emojis
+        function draw() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            const cellW = canvas.width / GRID_WIDTH;
+            const cellH = canvas.height / GRID_HEIGHT;
+            
+            // Calculate emoji size based on cell size
+            const emojiSize = Math.max(12, Math.min(cellW, cellH) * 0.8);
+            ctx.font = emojiSize + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Create drone position map for quick lookup
+            const dronePositions = new Set();
+            for (const drone of drones) {
+                const key = Math.floor(drone.x) + ',' + Math.floor(drone.y);
+                dronePositions.add(key);
+            }
+            
+            // Draw cells with emojis
+            for (let y = 0; y < GRID_HEIGHT; y++) {
+                for (let x = 0; x < GRID_WIDTH; x++) {
+                    const centerX = x * cellW + cellW / 2;
+                    const centerY = y * cellH + cellH / 2;
+                    const key = x + ',' + y;
+                    
+                    // Check if drone is at this position first
+                    if (dronePositions.has(key)) {
+                        ctx.fillText('🚁', centerX, centerY);
+                    } else {
+                        const cell = grid[y][x];
+                        let emoji = '';
+                        
+                        if (cell.fire) {
+                            emoji = '🔥';
+                        } else if (cell.burnt && cell.extinguishedByDrone) {
+                            emoji = '🟩';
+                        } else if (cell.burnt) {
+                            emoji = '⬛';
+                        } else if (cell.water) {
+                            emoji = '🔷';
+                        } else if (cell.tree) {
+                            emoji = '🌲';
+                        }
+                        
+                        if (emoji) {
+                            ctx.fillText(emoji, centerX, centerY);
+                        }
+                    }
+                }
+            }
+            
+            // Update counters
+            document.getElementById('droneCount').textContent = drones.length;
+            document.getElementById('fireCount').textContent = fires.length;
+        }
+
+        // Animation loop
+        function animate() {
+            if (!isRunning) return;
+            
+            spreadFire();
+            updateDrones();
+            draw();
+            
+            if (fires.length === 0) {
+                isRunning = false;
+                setTimeout(() => {
+                    alert('🎉 All fires extinguished!');
+                }, 100);
+                return;
+            }
+            
+            setTimeout(() => {
+                animationId = requestAnimationFrame(animate);
+            }, 250); // 250ms = 4 frames per second, like watching terminal output
+        }
+
+        // Slider event listeners
+        document.getElementById('omegaSlider').addEventListener('input', function(e) {
+            omega = parseFloat(e.target.value);
+            document.getElementById('omegaValue').textContent = omega.toFixed(1);
+        });
+
+        document.getElementById('phipSlider').addEventListener('input', function(e) {
+            phip = parseFloat(e.target.value);
+            document.getElementById('phipValue').textContent = phip.toFixed(1);
+        });
+
+        document.getElementById('phigSlider').addEventListener('input', function(e) {
+            phig = parseFloat(e.target.value);
+            document.getElementById('phigValue').textContent = phig.toFixed(1);
+        });
+
+        // Button controls
+        document.getElementById('startBtn').addEventListener('click', function() {
+            if (!isRunning) {
+                if (drones.length === 0) {
+                    initDrones();
+                }
+                isRunning = true;
+                animate();
+            }
+        });
+
+        document.getElementById('stopBtn').addEventListener('click', function() {
+            isRunning = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            isRunning = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+            initGrid();
+            initDrones();
+            draw();
+        });
+
+        // Initialize
+        initGrid();
+        draw();
+
+        // Generate floating drones for hero section
+        const dronesContainer = document.getElementById('floatingDrones');
+        for (let i = 0; i < 8; i++) {
+            const drone = document.createElement('div');
+            drone.className = 'absolute text-blue-400 opacity-60 float-animation';
+            drone.style.left = Math.random() * 100 + '%';
+            drone.style.top = Math.random() * 60 + '%';
+            drone.style.animationDuration = Math.random() * 3 + 4 + 's';
+            drone.style.animationDelay = Math.random() * 2 + 's';
+            drone.innerHTML = '<div class="relative"><div class="w-3 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div><div class="absolute -top-1 -left-1 w-5 h-5 border border-blue-400 rounded-full animate-ping"></div></div>';
+            dronesContainer.appendChild(drone);
+        }
+
+        // Parallax effect on hero content
+        const heroContent = document.getElementById('heroContent');
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            heroContent.style.transform = 'translateY(' + scrollY * 0.5 + 'px)';
+            heroContent.style.opacity = 1 - scrollY / 500;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- Loader HTML -->
+<div class="eva-loader-container">
+  <div class="loader">
+    <div class="modelViewPort">
+      <div class="eva">
+        <div class="head">
+          <div class="eyeChamber">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="hand"></div>
+          <div class="hand"></div>
+          <div class="scannerThing"></div>
+          <div class="scannerOrigin"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CSS to position it bottom-right -->
+<style>
+.eva-loader-container {
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  z-index: 9999;
+  pointer-events: none;
+  
+  /* SCALE THE ENTIRE ROBOT */
+  transform: scale(0.75); /* 50% of original size */
+  transform-origin: bottom right; /* scale from bottom-right corner */
+}
+
+
+/* From Uiverse.io by Subaashbala */ 
+.modelViewPort {
+  /* The black circle background around the model*/
+  perspective: 1000px;
+  width: 20rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  overflow: hidden;
+}
+.eva {
+  --EVA-ROTATION-DURATION: 4s;
+  transform-style: preserve-3d;
+  animation: rotateRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+}
+.head {
+  position: relative;
+  width: 6rem;
+  height: 4rem;
+  border-radius: 48% 53% 45% 55% / 79% 79% 20% 22%;
+  background: linear-gradient(to right, white 45%, gray);
+}
+.eyeChamber {
+  width: 4.5rem;
+  height: 2.75rem;
+  position: relative;
+  left: 50%;
+  top: 55%;
+  border-radius: 45% 53% 45% 48% / 62% 59% 35% 34%;
+  background-color: #0c203c;
+  box-shadow: 0px 0px 2px 2px white, inset 0px 0px 0px 2px black;
+  transform: translate(-50%, -50%);
+  animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+}
+.eye {
+  width: 1.2rem;
+  height: 1.5rem;
+  position: absolute;
+  border-radius: 50%;
+}
+.eye:first-child {
+  left: 12px;
+  top: 50%;
+  background: repeating-linear-gradient(
+    65deg,
+    #9bdaeb 0px,
+    #9bdaeb 1px,
+    white 2px
+  );
+  box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
+  transform: translate(0, -50%) rotate(-65deg);
+}
+.eye:nth-child(2) {
+  right: 12px;
+  top: 50%;
+  background: repeating-linear-gradient(
+    -65deg,
+    #9bdaeb 0px,
+    #9bdaeb 1px,
+    white 2px
+  );
+  box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
+  transform: translate(0, -50%) rotate(65deg);
+}
+.body {
+  width: 6rem;
+  height: 8rem;
+  position: relative;
+  margin-block-start: 0.25rem;
+  border-radius: 47% 53% 45% 55% / 12% 9% 90% 88%;
+  background: linear-gradient(to right, white 35%, gray);
+}
+.hand {
+  position: absolute;
+  left: -1.5rem;
+  top: 0.75rem;
+  width: 2rem;
+  height: 5.5rem;
+  border-radius: 40%;
+  background: linear-gradient(to left, white 15%, gray);
+  box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.25);
+  transform: rotateY(55deg) rotateZ(10deg);
+}
+.hand:first-child {
+  animation: compensateRotation var(--EVA-ROTATION-DURATION) linear infinite
+    alternate;
+}
+.hand:nth-child(2) {
+  left: 92%;
+  background: linear-gradient(to right, white 15%, gray);
+  transform: rotateY(55deg) rotateZ(-10deg);
+  animation: compensateRotationRight var(--EVA-ROTATION-DURATION) linear
+    infinite alternate;
+}
+.scannerThing {
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 60%;
+  top: 10%;
+  border-top: 180px solid #9bdaeb;
+  border-left: 250px solid transparent;
+  border-right: 250px solid transparent;
+  transform-origin: top left;
+  mask: linear-gradient(to right, white, transparent 35%);
+  animation: glow 2s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+}
+.scannerOrigin {
+  position: absolute;
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  left: 60%;
+  top: 10%;
+  background: #9bdaeb;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+  animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite;
+}
+@keyframes rotateRight {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(25deg);
+  }
+}
+@keyframes moveRight {
+  from {
+    transform: translate(-50%, -50%);
+  }
+  to {
+    transform: translate(-40%, -50%);
+  }
+}
+@keyframes compensateRotation {
+  from {
+    transform: rotateY(55deg) rotateZ(10deg);
+  }
+  to {
+    transform: rotatey(30deg) rotateZ(10deg);
+  }
+}
+@keyframes compensateRotationRight {
+  from {
+    transform: rotateY(55deg) rotateZ(-10deg);
+  }
+  to {
+    transform: rotateY(70deg) rotateZ(-10deg);
+  }
+}
+@keyframes glow {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  45% {
+    transform: rotate(-25deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+</style>
