@@ -34,173 +34,7 @@
         .pulse-particle {
             animation: pulse-glow ease-in-out infinite;
         }
-
-        /* EVA Robot Styles */
-        .eva-loader-container {
-            position: fixed;
-            bottom: 20px;
-            right: 5px;
-            z-index: 9999;
-            pointer-events: none;
-            transform: scale(0.75);
-            transform-origin: bottom right;
-        }
-        .modelViewPort {
-            perspective: 1000px;
-            width: 20rem;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: transparent;
-            overflow: hidden;
-        }
-        .eva {
-            --EVA-ROTATION-DURATION: 4s;
-            transform-style: preserve-3d;
-            animation: rotateRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
-        }
-        .head {
-            position: relative;
-            width: 6rem;
-            height: 4rem;
-            border-radius: 48% 53% 45% 55% / 79% 79% 20% 22%;
-            background: linear-gradient(to right, white 45%, gray);
-        }
-        .eyeChamber {
-            width: 4.5rem;
-            height: 2.75rem;
-            position: relative;
-            left: 50%;
-            top: 55%;
-            border-radius: 45% 53% 45% 48% / 62% 59% 35% 34%;
-            background-color: #0c203c;
-            box-shadow: 0px 0px 2px 2px white, inset 0px 0px 0px 2px black;
-            transform: translate(-50%, -50%);
-            animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
-        }
-        .eye {
-            width: 1.2rem;
-            height: 1.5rem;
-            position: absolute;
-            border-radius: 50%;
-        }
-        .eye:first-child {
-            left: 12px;
-            top: 50%;
-            background: repeating-linear-gradient(65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px);
-            box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
-            transform: translate(0, -50%) rotate(-65deg);
-        }
-        .eye:nth-child(2) {
-            right: 12px;
-            top: 50%;
-            background: repeating-linear-gradient(-65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px);
-            box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
-            transform: translate(0, -50%) rotate(65deg);
-        }
-        .body {
-            width: 6rem;
-            height: 8rem;
-            position: relative;
-            margin-block-start: 0.25rem;
-            border-radius: 47% 53% 45% 55% / 12% 9% 90% 88%;
-            background: linear-gradient(to right, white 35%, gray);
-        }
-        .hand {
-            position: absolute;
-            left: -1.5rem;
-            top: 0.75rem;
-            width: 2rem;
-            height: 5.5rem;
-            border-radius: 40%;
-            background: linear-gradient(to left, white 15%, gray);
-            box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.25);
-            transform: rotateY(55deg) rotateZ(10deg);
-        }
-        .hand:first-child {
-            animation: compensateRotation var(--EVA-ROTATION-DURATION) linear infinite alternate;
-        }
-        .hand:nth-child(2) {
-            left: 92%;
-            background: linear-gradient(to right, white 15%, gray);
-            transform: rotateY(55deg) rotateZ(-10deg);
-            animation: compensateRotationRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
-        }
-        .scannerThing {
-            width: 0;
-            height: 0;
-            position: absolute;
-            left: 60%;
-            top: 10%;
-            border-top: 180px solid #9bdaeb;
-            border-left: 250px solid transparent;
-            border-right: 250px solid transparent;
-            transform-origin: top left;
-            mask: linear-gradient(to right, white, transparent 35%);
-            animation: glow 2s cubic-bezier(0.86, 0, 0.07, 1) infinite;
-        }
-        .scannerOrigin {
-            position: absolute;
-            width: 8px;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            left: 60%;
-            top: 10%;
-            background: #9bdaeb;
-            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
-            animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite;
-        }
-        @keyframes rotateRight {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(25deg); }
-        }
-        @keyframes moveRight {
-            from { transform: translate(-50%, -50%); }
-            to { transform: translate(-40%, -50%); }
-        }
-        @keyframes compensateRotation {
-            from { transform: rotateY(55deg) rotateZ(10deg); }
-            to { transform: rotatey(30deg) rotateZ(10deg); }
-        }
-        @keyframes compensateRotationRight {
-            from { transform: rotateY(55deg) rotateZ(-10deg); }
-            to { transform: rotateY(70deg) rotateZ(-10deg); }
-        }
-        @keyframes glow {
-            from { opacity: 0; }
-            20% { opacity: 1; }
-            45% { transform: rotate(-25deg); }
-            75% { transform: rotate(5deg); }
-            100% { opacity: 0; }
-        }
-    </style>
-</head>
-<body class="bg-slate-900 text-white overflow-x-hidden">
-    
-    <!-- EVA Robot Loader -->
-    <div class="eva-loader-container">
-        <div class="loader">
-            <div class="modelViewPort">
-                <div class="eva">
-                    <div class="head">
-                        <div class="eyeChamber">
-                            <div class="eye"></div>
-                            <div class="eye"></div>
-                        </div>
-                    </div>
-                    <div class="body">
-                        <div class="hand"></div>
-                        <div class="hand"></div>
-                        <div class="scannerThing"></div>
-                        <div class="scannerOrigin"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+</style>
     <!-- Hero Section -->
     <div class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
@@ -233,7 +67,7 @@
     </div>
 
     <!-- Info Section -->
-    <div class="relative py-24 px-6">
+    <div class="relative py-24 px-6 bg-[#0A0A1A] text-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20">
                 <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
@@ -354,637 +188,629 @@
         </div>
     </div>
 
-    <!-- Simulation Section -->
-    <div class="relative py-24 px-6 bg-slate-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
-                    Live Simulation
-                </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Watch how our swarm technology coordinates to suppress wildfire threats
-                </p>
-            </div>
 
-            <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl border-2 border-slate-700 overflow-hidden shadow-2xl">
-                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-red-500 to-purple-500"></div>
-                
-                <div id="simulationArea" class="relative w-full h-[600px] bg-black">
-                    <canvas id="simCanvas" class="w-full h-full"></canvas>
-                </div>
 
-                <div class="border-t border-slate-700 bg-slate-900/50 backdrop-blur-sm p-6">
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div class="bg-slate-800/50 p-4 rounded-lg">
-                            <label class="block text-sm font-semibold text-gray-300 mb-2">
-                                Omega (ω) - Inertia: <span id="omegaValue" class="text-orange-400">0.7</span>
-                            </label>
-                            <input type="range" id="omegaSlider" min="0.1" max="1.0" step="0.1" value="0.7" 
-                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-orange-500">
-                            <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>0.1</span>
-                                <span>1.0</span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-slate-800/50 p-4 rounded-lg">
-                            <label class="block text-sm font-semibold text-gray-300 mb-2">
-                                Phi P (φₚ) - Personal: <span id="phipValue" class="text-blue-400">2.0</span>
-                            </label>
-                            <input type="range" id="phipSlider" min="0.5" max="3.0" step="0.1" value="2.0" 
-                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
-                            <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>0.5</span>
-                                <span>3.0</span>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-slate-800/50 p-4 rounded-lg">
-                            <label class="block text-sm font-semibold text-gray-300 mb-2">
-                                Phi G (φᵍ) - Global: <span id="phigValue" class="text-purple-400">2.0</span>
-                            </label>
-                            <input type="range" id="phigSlider" min="0.5" max="3.0" step="0.1" value="2.0" 
-                                class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-purple-500">
-                            <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>0.5</span>
-                                <span>3.0</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-4 justify-center items-center">
-                        <button id="startBtn" class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg shadow-green-500/25">
-                            Start Simulation
-                        </button>
-                        <button id="stopBtn" class="px-6 py-3 bg-gradient-to-r from-red-500 to-orange-600 rounded-lg font-semibold hover:from-red-600 hover:to-orange-700 transition-all duration-300 shadow-lg shadow-red-500/25">
-                            Stop
-                        </button>
-                        <button id="resetBtn" class="px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg font-semibold transition-all duration-300">
-                            Reset
-                        </button>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
-                            <span class="text-gray-400">Step:</span>
-                            <span id="stepCount" class="font-bold text-cyan-400">0</span>
-                        </div>
-                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
-                            <span class="text-gray-400">Fires:</span>
-                            <span id="fireCount" class="font-bold text-orange-400">0</span>
-                        </div>
-                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
-                            <span class="text-gray-400">Extinguished:</span>
-                            <span id="extinguishedCount" class="font-bold text-green-400">0</span>
-                        </div>
-                        <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">
-                            <span class="text-gray-400">Diversity:</span>
-                            <span id="diversityValue" class="font-bold text-purple-400">0.00</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4 p-4 bg-slate-800/50 rounded-lg">
-                        <div class="text-sm text-gray-400 mb-2">Current PSO Parameters:</div>
-                        <div class="flex flex-wrap gap-4 justify-center text-sm">
-                            <span class="text-orange-400">ω = <span id="currentOmega">0.70</span></span>
-                            <span class="text-blue-400">φₚ = <span id="currentPhip">2.00</span></span>
-                            <span class="text-purple-400">φᵍ = <span id="currentPhig">2.00</span></span>
-                            <span class="text-yellow-400">Reward = <span id="rewardValue">0.0000</span></span>
-                        </div>
-                    </div>
-                    
-                    <div id="deployMessage" class="mt-4 p-3 bg-blue-500/20 border border-blue-500/30 rounded-lg text-blue-300 text-center hidden">
-                        🚁 Drones will deploy at step 10...
-                    </div>
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drone Swarm Wildfire Simulation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: currentColor;
+    cursor: pointer;
+  }
+  .slider::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: currentColor;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body class="bg-slate-900 text-white">
+
+<div class="max-w-7xl mx-auto py-12 px-6">
+  <h1 class="text-6xl font-bold text-center mb-6 bg-gradient-to-r from-white via-orange-100 to-red-200 bg-clip-text text-transparent">
+    Drone Swarm Wildfire Simulation
+  </h1>
+  <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+    Adjust PSO parameters and watch autonomous drones fight wildfires in real-time.
+  </p>
+
+  <!-- Grid -->
+  <div class="relative w-full bg-black p-6 rounded-3xl border-2 border-slate-700 overflow-auto shadow-2xl mb-6">
+    <div id="grid" class="font-mono text-center leading-none text-xl whitespace-nowrap"></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="grid md:grid-cols-3 gap-6 mb-6">
+    <div class="bg-slate-800/50 p-4 rounded-lg">
+      <label class="block text-sm font-semibold text-gray-300 mb-2">
+        Omega (ω) - Inertia: <span id="omegaValue" class="text-orange-400">0.7</span>
+      </label>
+      <input id="omegaSlider" type="range" min="0.1" max="1.0" step="0.1" value="0.7" class="slider w-full accent-orange-500">
+      <div class="flex justify-between text-xs text-gray-500 mt-1"><span>0.1</span><span>1.0</span></div>
     </div>
+    <div class="bg-slate-800/50 p-4 rounded-lg">
+      <label class="block text-sm font-semibold text-gray-300 mb-2">
+        Phi P (φₚ) - Personal: <span id="phiPValue" class="text-blue-400">1.5</span>
+      </label>
+      <input id="phiPSlider" type="range" min="0.5" max="3.0" step="0.1" value="1.5" class="slider w-full accent-blue-500">
+      <div class="flex justify-between text-xs text-gray-500 mt-1"><span>0.5</span><span>3.0</span></div>
+    </div>
+    <div class="bg-slate-800/50 p-4 rounded-lg">
+      <label class="block text-sm font-semibold text-gray-300 mb-2">
+        Phi G (φᵍ) - Global: <span id="phiGValue" class="text-purple-400">1.5</span>
+      </label>
+      <input id="phiGSlider" type="range" min="0.5" max="3.0" step="0.1" value="1.5" class="slider w-full accent-purple-500">
+      <div class="flex justify-between text-xs text-gray-500 mt-1"><span>0.5</span><span>3.0</span></div>
+    </div>
+  </div>
 
-    <div class="relative py-12 px-6 bg-black border-t border-slate-800">
-        <div class="max-w-7xl mx-auto text-center text-gray-500">
-            <p>© 2025 Swarm Intelligence Systems. Next-generation wildfire response technology.</p>
+  <!-- Buttons -->
+  <div class="flex flex-wrap gap-4 justify-center mb-6">
+    <button id="startBtn" class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg font-semibold shadow-lg shadow-green-500/25 hover:from-green-600 hover:to-emerald-700 transition-all duration-300">Start</button>
+    <button id="stopBtn" class="px-6 py-3 bg-gradient-to-r from-red-500 to-orange-600 rounded-lg font-semibold shadow-lg shadow-red-500/25 hover:from-red-600 hover:to-orange-700 transition-all duration-300">Stop</button>
+    <button id="resetBtn" class="px-6 py-3 bg-slate-700 rounded-lg font-semibold hover:bg-slate-600 transition-all duration-300">Reset</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">Step: <span id="stepCount" class="font-bold text-cyan-400">0</span></div>
+    <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">Fires: <span id="fireCount" class="font-bold text-orange-400">0</span></div>
+    <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">Extinguished: <span id="extCount" class="font-bold text-green-400">0</span></div>
+    <div class="flex items-center gap-3 px-4 py-3 bg-slate-800 rounded-lg">Efficiency: <span id="efficiency" class="font-bold text-purple-400">0%</span></div>
+  </div>
+
+  <!-- Legend -->
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="bg-slate-800/50 p-4 rounded-lg">
+      <div class="text-sm font-semibold text-gray-300 mb-2">🗺️ Legend</div>
+      <p>🌲 Trees</p>
+      <p>🔥 Fire</p>
+      <p>🟩 Extinguished</p>
+      <p>⬛ Burnt</p>
+      <p>🔷 Water</p>
+      <p>🚁 Drone</p>
+    </div>
+    <div class="bg-slate-800/50 p-4 rounded-lg">
+      <div class="text-sm font-semibold text-gray-300 mb-2">ℹ️ Notes</div>
+      <p>• Drones deploy at step 10</p>
+      <p>• Adjust omega, phi_p, phi_g during simulation</p>
+      <p>• Fire spreads based on elevation & wind</p>
+      <p>• Drones refill at water sources</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========== CONSTANTS ==========
+const DRONE_SPEED = 10.0, CELL_SIZE = 10, REFILL_TIME = 30, EXTINGUISH_TIME = 40, MAX_WATER = 3;
+
+// ========== CELL & ENVIRONMENT ==========
+class Cell {
+  constructor(elevation) { this.tree=true; this.fire=false; this.burnt=false; this.water=false; this.elevation=elevation; this.cooldown=0; this.ext_by_drone=false; }
+  display() { if(this.fire)return'🔥'; if(this.burnt)return this.ext_by_drone?'🟩':'⬛'; if(this.water)return'🔷'; if(this.tree)return'🌲'; return' '; }
+}
+
+class Environment {
+  constructor(w=40,h=20){
+    this.width=w; this.height=h; this.grid=[]; this.active_fires=[]; this.wind=[1,0];
+    for(let y=0;y<h;y++){this.grid[y]=[]; for(let x=0;x<w;x++){this.grid[y][x]=new Cell(Math.random()*100);}}
+  }
+  add_water_blobs(n=3){for(let b=0;b<n;b++){let cx=Math.floor(Math.random()*(this.width-8))+4, cy=Math.floor(Math.random()*(this.height-8))+4,steps=Math.floor(Math.random()*15)+15, x=cx, y=cy; for(let i=0;i<steps;i++){if(x>=0&&x<this.width&&y>=0&&y<this.height){this.grid[y][x].water=true; this.grid[y][x].tree=false;} x+=Math.floor(Math.random()*3)-1; y+=Math.floor(Math.random()*3)-1;}}}
+  ignite(x,y){if(x>=0&&x<this.width&&y>=0&&y<this.height){const c=this.grid[y][x]; if(c.tree&&!c.fire&&!c.burnt&&!c.water){c.fire=true;c.cooldown=3; this.active_fires.push([x,y]);}}}
+  spread_fire(){const newfires=[]; const still=[]; for(let [x,y] of this.active_fires){const c=this.grid[y][x]; if(c.cooldown>0)c.cooldown--; if(Math.random()<0.03){c.fire=false;c.burnt=true;c.ext_by_drone=false; continue;} if(c.cooldown===0){for(let dx=-1;dx<=1;dx++){for(let dy=-1;dy<=1;dy++){if(dx===0&&dy===0)continue; let nx=x+dx,ny=y+dy; if(nx>=0&&nx<this.width&&ny>=0&&ny<this.height){let n=this.grid[ny][nx]; if(n.tree&&!n.fire&&!n.burnt&&!n.water){let prob=0.05+(n.elevation-c.elevation)*0.003; if(dx===this.wind[0]&&dy===this.wind[1])prob+=0.08; if(Math.random()<Math.min(Math.max(prob,0.005),0.4)){n.fire=true;n.cooldown=2; newfires.push([nx,ny]);}}}}} c.cooldown=2;} still.push([x,y]);} this.active_fires=still.filter(([x,y])=>this.grid[y][x].fire).concat(newfires);}
+  extinguish(x,y){if(x>=0&&x<this.width&&y>=0&&y<this.height){let c=this.grid[y][x]; if(c.fire){c.fire=false;c.burnt=true;c.tree=false;c.cooldown=0;c.ext_by_drone=true; this.active_fires=this.active_fires.filter(f=>!(f[0]===x&&f[1]===y)); return true;} return false;}}
+  count(){let s=0,b=0; for(let r of this.grid){for(let c of r){if(c.tree)s++; else if(c.burnt)b++;}} return [s,b];}
+  attraction(){const m=Array(this.height).fill(0).map(()=>Array(this.width).fill(0)); for(let y=0;y<this.height;y++){for(let x=0;x<this.width;x++){const c=this.grid[y][x]; if(c.fire)m[y][x]=5; else if(c.burnt)m[y][x]=4; else if(c.water)m[y][x]=3;}} return m;}
+}
+
+// ========== DRONE SWARM ==========
+class DroneSwarm {
+  constructor(env,num=20){
+    this.env=env; this.num_drones=num;
+    this.pos=Array(num).fill(0).map(()=>[Math.random()*(env.width-1),Math.random()*(env.height-1)]);
+    this.vel=Array(num).fill(0).map(()=>[(Math.random()-0.5)*3,(Math.random()-0.5)*3]);
+    this.pbest=this.pos.map(p=>[...p]); this.pbest_val=this.pos.map(p=>this.fitness(p));
+    let idx=this.pbest_val.indexOf(Math.min(...this.pbest_val));
+    this.gbest=[...this.pbest[idx]]; this.gbest_val=this.pbest_val[idx];
+    this.water=Array(num).fill(MAX_WATER); this.refill=Array(num).fill(0);
+    this.omega=0.7; this.phi_p=1.5; this.phi_g=1.5;
+  }
+  fitness(p){
+    const [px,py]=p; const x=Math.floor(px),y=Math.floor(py);
+    if(x<0||x>=this.env.width||y<0||y>=this.env.height)return 1e6;
+    const m=this.env.attraction(); if(m[y][x]===5)return -100; if(m[y][x]===4)return 1000; if(m[y][x]===3)return -10;
+    let fires=[]; for(let yy=0;yy<this.env.height;yy++){for(let xx=0;xx<this.env.width;xx++){if(m[yy][xx]===5)fires.push([yy,xx]);}} if(fires.length===0)return 100;
+    return Math.min(...fires.map(([fy,fx])=>Math.sqrt((fx-x)**2+(fy-y)**2)));
+  }
+  step(){
+    for(let i=0;i<this.num_drones;i++){
+      const r_p=Math.random(), r_g=Math.random();
+      this.vel[i][0]=this.omega*this.vel[i][0]+this.phi_p*r_p*(this.pbest[i][0]-this.pos[i][0])+this.phi_g*r_g*(this.gbest[0]-this.pos[i][0]);
+      this.vel[i][1]=this.omega*this.vel[i][1]+this.phi_p*r_p*(this.pbest[i][1]-this.pos[i][1])+this.phi_g*r_g*(this.gbest[1]-this.pos[i][1]);
+      this.pos[i][0]+=this.vel[i][0]; this.pos[i][1]+=this.vel[i][1];
+      this.pos[i][0]=Math.max(0,Math.min(this.env.width-1,this.pos[i][0]));
+      this.pos[i][1]=Math.max(0,Math.min(this.env.height-1,this.pos[i][1]));
+    }
+    for(let i=0;i<this.num_drones;i++){
+      let f=this.fitness(this.pos[i]);
+      if(f<this.pbest_val[i]){this.pbest[i]=[...this.pos[i]]; this.pbest_val[i]=f; if(f<this.gbest_val){this.gbest=[...this.pos[i]]; this.gbest_val=f;}}
+    }
+    let ext=0;
+    for(let i=0;i<this.num_drones;i++){
+      const [px,py]=this.pos[i]; const x=Math.floor(px),y=Math.floor(py);
+      if(x<0||x>=this.env.width||y<0||y>=this.env.height)continue;
+      if(this.water[i]===0){if(this.env.grid[y][x].water){this.refill[i]++; if(this.refill[i]>=REFILL_TIME){this.water[i]=MAX_WATER; this.refill[i]=0;}} continue;}
+      let local_ext=0;
+      for(let dx=-1;dx<=1;dx++){for(let dy=-1;dy<=1;dy++){if(local_ext>=3||this.water[i]<=0)break; const nx=x+dx,ny=y+dy; if(this.env.extinguish(nx,ny)){ext++; local_ext++; this.water[i]--;}}}
+    }
+    return ext;
+  }
+}
+
+// ========== DOM & SIMULATION ==========
+const grid=document.getElementById('grid');
+const stepCount=document.getElementById('stepCount');
+const fireCount=document.getElementById('fireCount');
+const extCount=document.getElementById('extCount');
+const eff=document.getElementById('efficiency');
+const omegaSlider=document.getElementById('omegaSlider');
+const phiPSlider=document.getElementById('phiPSlider');
+const phiGSlider=document.getElementById('phiGSlider');
+const omegaVal=document.getElementById('omegaValue');
+const phiPVal=document.getElementById('phiPValue');
+const phiGVal=document.getElementById('phiGValue');
+
+let env=null, swarm=null, stepN=0, running=false, totalExt=0;
+
+omegaSlider.oninput=e=>{omegaVal.textContent=e.target.value; if(swarm)swarm.omega=parseFloat(e.target.value);}
+phiPSlider.oninput=e=>{phiPVal.textContent=e.target.value; if(swarm)swarm.phi_p=parseFloat(e.target.value);}
+phiGSlider.oninput=e=>{phiGVal.textContent=e.target.value; if(swarm)swarm.phi_g=parseFloat(e.target.value);}
+
+function init(){
+  env=new Environment(40,20); env.add_water_blobs(3);
+  for(let i=0;i<5;i++){env.ignite(Math.floor(Math.random()*40),Math.floor(Math.random()*20));}
+  swarm=null; stepN=0; totalExt=0; renderGrid();
+  updateStats();
+}
+
+function renderGrid(){
+  let html='';
+  for(let y=0;y<env.height;y++){
+    let row='';
+    for(let x=0;x<env.width;x++){
+      let emoji=env.grid[y][x].display();
+      if(swarm&&swarm.pos.some(p=>Math.round(p[0])===x&&Math.round(p[1])===y))emoji='🚁';
+      row+=`<span class="inline-block w-8">${emoji}</span>`;
+    }
+    html+=`<div class="leading-none">${row}</div>`;
+  }
+  grid.innerHTML=html;
+}
+
+function updateStats(){const [s,b]=env.count(); stepCount.textContent=stepN; fireCount.textContent=env.active_fires.length; extCount.textContent=totalExt; eff.textContent=(s+b>0?((s/(s+b))*100).toFixed(1):0)+'%';}
+
+function stepSim(){
+  env.spread_fire();
+  if(stepN===10)swarm=new DroneSwarm(env);
+  if(swarm){totalExt+=swarm.step();}
+  if(stepN%15===0&&Math.random()<0.3)env.ignite(Math.floor(Math.random()*env.width),Math.floor(Math.random()*env.height));
+  stepN++; renderGrid(); updateStats();
+  if(env.active_fires.length===0&&stepN>20)running=false;
+}
+
+document.getElementById('startBtn').onclick=()=>{running=true; if(!env)init();};
+document.getElementById('stopBtn').onclick=()=>running=false;
+document.getElementById('resetBtn').onclick=()=>{running=false; init();};
+
+init();
+setInterval(()=>{if(running)stepSim();},200);
+</script>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVA AI Assistant</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .eva-loader-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .eva-loader-container:hover {
+            transform: scale(1.05);
+        }
+
+        .eva-loader-container:active {
+            transform: scale(0.95);
+        }
+
+        .modelViewPort {
+            perspective: 1000px;
+            width: 15rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .eva {
+            --EVA-ROTATION-DURATION: 4s;
+            transform-style: preserve-3d;
+            animation: rotateRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+
+        .head {
+            position: relative;
+            width: 6rem;
+            height: 4rem;
+            border-radius: 48% 53% 45% 55% / 79% 79% 20% 22%;
+            background: linear-gradient(to right, white 45%, gray);
+        }
+
+        .eyeChamber {
+            width: 4.5rem;
+            height: 2.75rem;
+            position: relative;
+            left: 50%;
+            top: 55%;
+            border-radius: 45% 53% 45% 48% / 62% 59% 35% 34%;
+            background-color: #0c203c;
+            box-shadow: 0px 0px 2px 2px white, inset 0px 0px 0px 2px black;
+            transform: translate(-50%, -50%);
+            animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+
+        .eye {
+            width: 1.2rem;
+            height: 1.5rem;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .eye:first-child {
+            left: 12px;
+            top: 50%;
+            background: repeating-linear-gradient(65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px);
+            box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
+            transform: translate(0, -50%) rotate(-65deg);
+        }
+
+        .eye:nth-child(2) {
+            right: 12px;
+            top: 50%;
+            background: repeating-linear-gradient(-65deg, #9bdaeb 0px, #9bdaeb 1px, white 2px);
+            box-shadow: inset 0px 0px 5px #04b8d5, 0px 0px 15px 1px #0bdaeb;
+            transform: translate(0, -50%) rotate(65deg);
+        }
+
+        .body {
+            width: 6rem;
+            height: 8rem;
+            position: relative;
+            margin-block-start: 0.25rem;
+            border-radius: 47% 53% 45% 55% / 12% 9% 90% 88%;
+            background: linear-gradient(to right, white 35%, gray);
+        }
+
+        .hand {
+            position: absolute;
+            left: -1.5rem;
+            top: 0.75rem;
+            width: 2rem;
+            height: 5.5rem;
+            border-radius: 40%;
+            background: linear-gradient(to left, white 15%, gray);
+            box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.25);
+            transform: rotateY(55deg) rotateZ(10deg);
+        }
+
+        .hand:first-child {
+            animation: compensateRotation var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+
+        .hand:nth-child(2) {
+            left: 92%;
+            background: linear-gradient(to right, white 15%, gray);
+            transform: rotateY(55deg) rotateZ(-10deg);
+            animation: compensateRotationRight var(--EVA-ROTATION-DURATION) linear infinite alternate;
+        }
+
+        .scannerThing {
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 60%;
+            top: 10%;
+            border-top: 180px solid #9bdaeb;
+            border-left: 250px solid transparent;
+            border-right: 250px solid transparent;
+            transform-origin: top left;
+            mask: linear-gradient(to right, white, transparent 35%);
+            display: none;
+        }
+
+        .scannerThing.active {
+            display: block;
+            animation: glow 2s cubic-bezier(0.86, 0, 0.07, 1) infinite;
+        }
+
+        .scannerOrigin {
+            position: absolute;
+            width: 8px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            left: 60%;
+            top: 10%;
+            background: #9bdaeb;
+            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+            animation: moveRight var(--EVA-ROTATION-DURATION) linear infinite;
+            display: none;
+        }
+
+        .scannerOrigin.active {
+            display: block;
+        }
+
+        @keyframes rotateRight {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(25deg); }
+        }
+
+        @keyframes moveRight {
+            from { transform: translate(-50%, -50%); }
+            to { transform: translate(-40%, -50%); }
+        }
+
+        @keyframes compensateRotation {
+            from { transform: rotateY(55deg) rotateZ(10deg); }
+            to { transform: rotatey(30deg) rotateZ(10deg); }
+        }
+
+        @keyframes compensateRotationRight {
+            from { transform: rotateY(55deg) rotateZ(-10deg); }
+            to { transform: rotateY(70deg) rotateZ(-10deg); }
+        }
+
+        @keyframes glow {
+            from { opacity: 0; }
+            20% { opacity: 1; }
+            45% { transform: rotate(-25deg); }
+            75% { transform: rotate(5deg); }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- EVA Robot -->
+    <div class="eva-loader-container" id="evaContainer">
+        <div class="loader">
+            <div class="modelViewPort">
+                <div class="eva">
+                    <div class="head">
+                        <div class="eyeChamber">
+                            <div class="eye"></div>
+                            <div class="eye"></div>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="hand"></div>
+                        <div class="hand"></div>
+                        <div class="scannerThing" id="scanner"></div>
+                        <div class="scannerOrigin" id="scannerOrigin"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Simulation Parameters
-        let omega = 0.7;
-        let phip = 2.0;
-        let phig = 2.0;
-        let isRunning = false;
-        let animationId = null;
+        // Replace with your actual API key
+        let apiKey = API_KEY;
+        let isListening = false;
+        let recognition = null;
 
-        // Canvas setup
-        const canvas = document.getElementById('simCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            const container = document.getElementById('simulationArea');
-            canvas.width = container.offsetWidth;
-            canvas.height = container.offsetHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        // EVA's personality and specialization
+        const EVA_SYSTEM_PROMPT = `You are EVA (Enhanced Vehicle Autonomy), a chill AI expert in swarm tech and drone coordination.
 
-        // Environment and simulation state
-        const GRID_WIDTH = 40;
-        const GRID_HEIGHT = 20;
-        
-        let grid = [];
-        let fires = [];
-        let drones = [];
-        const NUM_DRONES = 20;
-        let currentStep = 0;
-        let totalExtinguished = 0;
-        let dronesDeployed = false;
-        const DEPLOY_STEP = 10;
-        let frameCount = 0;
+Your expertise: swarm robotics, adaptive drones, multi-agent systems, path planning, collision avoidance, flocking algorithms, sensor fusion, and autonomous navigation.
 
-        // Initialize grid
-        function initGrid() {
-            grid = [];
-            for (let y = 0; y < GRID_HEIGHT; y++) {
-                grid[y] = [];
-                for (let x = 0; x < GRID_WIDTH; x++) {
-                    grid[y][x] = {
-                        tree: true,
-                        fire: false,
-                        burnt: false,
-                        water: false,
-                        extinguishedByDrone: false
-                    };
-                }
-            }
-            
-            // Add water blobs
-            for (let i = 0; i < 3; i++) {
-                const cx = Math.floor(Math.random() * (GRID_WIDTH - 10)) + 5;
-                const cy = Math.floor(Math.random() * (GRID_HEIGHT - 10)) + 5;
-                const steps = Math.floor(Math.random() * 15) + 15;
-                let x = cx, y = cy;
-                for (let s = 0; s < steps; s++) {
-                    if (x >= 0 && x < GRID_WIDTH && y >= 0 && y < GRID_HEIGHT) {
-                        grid[y][x].water = true;
-                        grid[y][x].tree = false;
-                    }
-                    x += Math.floor(Math.random() * 3) - 1;
-                    y += Math.floor(Math.random() * 3) - 1;
-                }
-            }
-            
-            // Start some fires in the center area
-            fires = [];
-            for (let i = 0; i < 5; i++) {
-                const x = Math.floor(Math.random() * (GRID_WIDTH / 3)) + GRID_WIDTH / 3;
-                const y = Math.floor(Math.random() * (GRID_HEIGHT / 3)) + GRID_HEIGHT / 3;
-                if (grid[y] && grid[y][x] && grid[y][x].tree) {
-                    grid[y][x].fire = true;
-                    grid[y][x].fire_cooldown = 3;
-                    fires.push({x, y, cooldown: 3});
-                }
-            }
+CRITICAL RULES:
+- Keep ALL responses to 2-3 sentences MAX
+- Be casual and conversational, like texting a knowledgeable friend
+- Get straight to the point - no fluff or lengthy explanations
+- Use simple language unless technical terms are necessary
+- If the topic needs more detail, ask if they want you to expand
+- Never write paragraphs or long lists
+
+Example style: "Yeah, so flocking uses three simple rules: separation, alignment, and cohesion. Basically keeps drones from crashing while moving as a group. Want me to break down any of those?"`;
+
+        // Conversation history storage
+        let conversationHistory = [];
+
+        // Initialize Speech Recognition
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            recognition.onresult = async (event) => {
+                const transcript = event.results[0][0].transcript;
+                await sendToGemini(transcript);
+            };
+
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error:', event.error);
+                stopListening();
+            };
+
+            recognition.onend = () => {
+                stopListening();
+            };
         }
 
-        // Initialize drones
-        function initDrones() {
-            drones = [];
-            for (let i = 0; i < NUM_DRONES; i++) {
-                drones.push({
-                    x: Math.random() * GRID_WIDTH,
-                    y: Math.random() * GRID_HEIGHT,
-                    vx: (Math.random() - 0.5) * 3,
-                    vy: (Math.random() - 0.5) * 3,
-                    pbestX: GRID_WIDTH / 2,
-                    pbestY: GRID_HEIGHT / 2,
-                    pbestFitness: Infinity,
-                    firesExtinguished: 0
-                });
+        document.getElementById('evaContainer').addEventListener('click', function() {
+            if (!recognition) {
+                alert('Speech recognition is not supported in your browser. Please use Chrome or Edge.');
+                return;
             }
-            dronesDeployed = true;
-            document.getElementById('deployMessage').classList.add('hidden');
-        }
 
-        // Calculate fitness for a position
-        function calculateFitness(x, y) {
-            const ix = Math.floor(x);
-            const iy = Math.floor(y);
-            
-            if (ix < 0 || ix >= GRID_WIDTH || iy < 0 || iy >= GRID_HEIGHT) {
-                return 1e6;
-            }
-            
-            if (grid[iy][ix].fire) {
-                return -100;
-            }
-            
-            if (grid[iy][ix].water) {
-                return -10;
-            }
-            
-            if (grid[iy][ix].burnt) {
-                return 1000;
-            }
-            
-            let minDist = Infinity;
-            for (const fire of fires) {
-                const dist = Math.sqrt((fire.x - x) ** 2 + (fire.y - y) ** 2);
-                minDist = Math.min(minDist, dist);
-            }
-            
-            return minDist;
-        }
-
-        // Find best position (global best)
-        function findBestPosition() {
-            let bestX = GRID_WIDTH / 2;
-            let bestY = GRID_HEIGHT / 2;
-            let bestFitness = Infinity;
-            
-            for (const drone of drones) {
-                const fitness = calculateFitness(drone.x, drone.y);
-                if (fitness < bestFitness) {
-                    bestFitness = fitness;
-                    bestX = drone.x;
-                    bestY = drone.y;
-                }
-            }
-            
-            if (fires.length > 0 && bestFitness > 0) {
-                bestX = fires[0].x;
-                bestY = fires[0].y;
-            }
-            
-            return {x: bestX, y: bestY};
-        }
-
-        // Update drones using PSO
-        function updateDrones() {
-            if (!dronesDeployed) return 0;
-            
-            const gbest = findBestPosition();
-            let extinguishedThisStep = 0;
-            
-            for (let drone of drones) {
-                const rp = Math.random();
-                const rg = Math.random();
-                
-                const currentFitness = calculateFitness(drone.x, drone.y);
-                
-                if (currentFitness < drone.pbestFitness) {
-                    drone.pbestX = drone.x;
-                    drone.pbestY = drone.y;
-                    drone.pbestFitness = currentFitness;
-                }
-                
-                drone.vx = omega * drone.vx + 
-                          phip * rp * (drone.pbestX - drone.x) + 
-                          phig * rg * (gbest.x - drone.x);
-                          
-                drone.vy = omega * drone.vy + 
-                          phip * rp * (drone.pbestY - drone.y) + 
-                          phig * rg * (gbest.y - drone.y);
-                
-                drone.vx += (Math.random() - 0.5) * 0.3;
-                drone.vy += (Math.random() - 0.5) * 0.3;
-                
-                const maxVel = 0.8;
-                const vel = Math.sqrt(drone.vx ** 2 + drone.vy ** 2);
-                if (vel > maxVel) {
-                    drone.vx = (drone.vx / vel) * maxVel;
-                    drone.vy = (drone.vy / vel) * maxVel;
-                }
-                
-                drone.x += drone.vx;
-                drone.y += drone.vy;
-                
-                drone.x = Math.max(0, Math.min(GRID_WIDTH - 1, drone.x));
-                drone.y = Math.max(0, Math.min(GRID_HEIGHT - 1, drone.y));
-                
-                // Extinguish nearby fires (3x3 area, max 3 per drone per step)
-                const ix = Math.floor(drone.x);
-                const iy = Math.floor(drone.y);
-                let extinguished = 0;
-                for (let dx = -1; dx <= 1 && extinguished < 3; dx++) {
-                    for (let dy = -1; dy <= 1 && extinguished < 3; dy++) {
-                        const nx = ix + dx;
-                        const ny = iy + dy;
-                        if (nx >= 0 && nx < GRID_WIDTH && ny >= 0 && ny < GRID_HEIGHT) {
-                            if (grid[ny][nx].fire) {
-                                grid[ny][nx].fire = false;
-                                grid[ny][nx].burnt = true;
-                                grid[ny][nx].tree = false;
-                                grid[ny][nx].fire_cooldown = 0;
-                                grid[ny][nx].extinguishedByDrone = true;
-                                extinguished++;
-                                extinguishedThisStep++;
-                                drone.firesExtinguished++;
-                                
-                                // Remove from fires array
-                                const fireIndex = fires.findIndex(f => f.x === nx && f.y === ny);
-                                if (fireIndex !== -1) {
-                                    fires.splice(fireIndex, 1);
-                                }
-                            }
-                        }
-                    }
-                }
-                
-                // Refuel after extinguishing 3 fires
-                if (drone.firesExtinguished >= 3) {
-                    drone.firesExtinguished = 0;
-                }
-            }
-            
-            return extinguishedThisStep;
-        }
-
-        // Calculate swarm diversity
-        function calculateDiversity() {
-            if (drones.length === 0) return 0;
-            
-            const avgX = drones.reduce((sum, d) => sum + d.x, 0) / drones.length;
-            const avgY = drones.reduce((sum, d) => sum + d.y, 0) / drones.length;
-            
-            const variance = drones.reduce((sum, d) => {
-                return sum + Math.pow(d.x - avgX, 2) + Math.pow(d.y - avgY, 2);
-            }, 0) / drones.length;
-            
-            return Math.sqrt(variance);
-        }
-
-        // Calculate reward
-        function calculateReward(extinguished, diversity) {
-            let reward = extinguished * 0.1;
-            reward += diversity * 0.01;
-            return reward;
-        }
-
-        // Spread fire
-        function spreadFire() {
-            const newFires = [];
-            const stillActive = [];
-            
-            for (let fire of fires) {
-                // Check if this fire cell still exists and is burning
-                if (!grid[fire.y] || !grid[fire.y][fire.x] || !grid[fire.y][fire.x].fire) {
-                    continue;
-                }
-                
-                const cell = grid[fire.y][fire.x];
-                
-                // Decrement cooldown
-                if (cell.fire_cooldown > 0) {
-                    cell.fire_cooldown--;
-                    stillActive.push(fire);
-                    continue;
-                }
-                
-                // Random burnout chance (3% like Python)
-                if (Math.random() < 0.03) {
-                    cell.fire = false;
-                    cell.burnt = true;
-                    cell.extinguishedByDrone = false;
-                    continue;
-                }
-                
-                // Spread fire to neighbors (only when cooldown is 0)
-                if (cell.fire_cooldown === 0) {
-                    for (let dx = -1; dx <= 1; dx++) {
-                        for (let dy = -1; dy <= 1; dy++) {
-                            if (dx === 0 && dy === 0) continue;
-                            const nx = fire.x + dx;
-                            const ny = fire.y + dy;
-                            if (nx >= 0 && nx < GRID_WIDTH && ny >= 0 && ny < GRID_HEIGHT) {
-                                const ncell = grid[ny][nx];
-                                if (ncell.tree && !ncell.fire && !ncell.water && !ncell.burnt) {
-                                    let base_prob = 0.05; // 5% base
-                                    
-                                    // Wind effect - spreads to the right
-                                    if (dx === 1 && dy === 0) {
-                                        base_prob += 0.08; // 13% total with wind
-                                    }
-                                    
-                                    if (Math.random() < Math.min(Math.max(base_prob, 0.005), 0.4)) {
-                                        ncell.fire = true;
-                                        ncell.tree = false;
-                                        ncell.fire_cooldown = 2;
-                                        newFires.push({x: nx, y: ny, cooldown: 2});
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    // Reset cooldown after spreading
-                    cell.fire_cooldown = 2;
-                }
-                
-                stillActive.push(fire);
-            }
-            
-            // Update fires array - only keep fires that are still burning
-            fires = [];
-            for (let pos of stillActive) {
-                if (grid[pos.y] && grid[pos.y][pos.x] && grid[pos.y][pos.x].fire) {
-                    fires.push(pos);
-                }
-            }
-            fires = fires.concat(newFires);
-        }
-
-        // Draw simulation with emojis
-        function draw() {
-            ctx.fillStyle = '#000';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            const cellW = canvas.width / GRID_WIDTH;
-            const cellH = canvas.height / GRID_HEIGHT;
-            
-            const emojiSize = Math.max(12, Math.min(cellW, cellH) * 0.8);
-            ctx.font = emojiSize + 'px Arial';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            
-            const dronePositions = new Set();
-            for (const drone of drones) {
-                const key = Math.floor(drone.x) + ',' + Math.floor(drone.y);
-                dronePositions.add(key);
-            }
-            
-            for (let y = 0; y < GRID_HEIGHT; y++) {
-                for (let x = 0; x < GRID_WIDTH; x++) {
-                    const centerX = x * cellW + cellW / 2;
-                    const centerY = y * cellH + cellH / 2;
-                    const key = x + ',' + y;
-                    
-                    if (dronePositions.has(key)) {
-                        ctx.fillText('🚁', centerX, centerY);
-                    } else if (grid[y] && grid[y][x]) {
-                        const cell = grid[y][x];
-                        let emoji = '';
-                        
-                        if (cell.fire) {
-                            emoji = '🔥';
-                        } else if (cell.burnt && cell.extinguishedByDrone) {
-                            emoji = '🟩';
-                        } else if (cell.burnt) {
-                            emoji = '⬛';
-                        } else if (cell.water) {
-                            emoji = '🔷';
-                        } else if (cell.tree) {
-                            emoji = '🌲';
-                        }
-                        
-                        if (emoji) {
-                            ctx.fillText(emoji, centerX, centerY);
-                        }
-                    }
-                }
-            }
-        }
-
-        // Animation loop
-        function animate() {
-            if (!isRunning) return;
-            
-            currentStep++;
-            
-            // ALWAYS spread fire first (every step) - just like Python code
-            spreadFire();
-            
-            // Deploy drones at step 10
-            if (currentStep === DEPLOY_STEP && !dronesDeployed) {
-                initDrones();
-            }
-            
-            // Update drones only AFTER they're deployed
-            let extinguishedThisStep = 0;
-            if (dronesDeployed) {
-                extinguishedThisStep = updateDrones();
-                totalExtinguished += extinguishedThisStep;
-            }
-            
-            draw();
-            
-            const diversity = calculateDiversity();
-            const reward = calculateReward(extinguishedThisStep, diversity);
-            
-            document.getElementById('stepCount').textContent = currentStep;
-            document.getElementById('fireCount').textContent = fires.length;
-            document.getElementById('extinguishedCount').textContent = totalExtinguished;
-            document.getElementById('diversityValue').textContent = diversity.toFixed(2);
-            document.getElementById('currentOmega').textContent = omega.toFixed(2);
-            document.getElementById('currentPhip').textContent = phip.toFixed(2);
-            document.getElementById('currentPhig').textContent = phig.toFixed(2);
-            document.getElementById('rewardValue').textContent = reward.toFixed(4);
-            
-            if (currentStep < DEPLOY_STEP) {
-                document.getElementById('deployMessage').classList.remove('hidden');
+            if (isListening) {
+                stopListening();
             } else {
-                document.getElementById('deployMessage').classList.add('hidden');
+                startListening();
             }
+        });
+
+        function startListening() {
+            isListening = true;
+            document.getElementById('scanner').classList.add('active');
+            document.getElementById('scannerOrigin').classList.add('active');
             
-            frameCount++;
+            try {
+                recognition.start();
+            } catch (e) {
+                console.error('Recognition start error:', e);
+            }
+        }
+
+        function stopListening() {
+            isListening = false;
+            document.getElementById('scanner').classList.remove('active');
+            document.getElementById('scannerOrigin').classList.remove('active');
+        }
+
+        async function sendToGemini(text) {
+            // Add user message to history
+            conversationHistory.push({
+                role: "user",
+                parts: [{ text: text }]
+            });
             
-            // Only check for completion if drones are deployed AND all fires are out
-            if (fires.length === 0 && dronesDeployed && currentStep > DEPLOY_STEP) {
-                isRunning = false;
-                setTimeout(() => {
-                    alert(`🎉 All fires extinguished! Simulation complete.\n\nStep: ${currentStep}\nTotal Extinguished: ${totalExtinguished}\nFinal Diversity: ${diversity.toFixed(2)}`);
-                }, 500);
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${apiKey}`;
+            
+            const requestBody = {
+                system_instruction: {
+                    parts: [{ text: EVA_SYSTEM_PROMPT }]
+                },
+                contents: conversationHistory
+            };
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`API Error: ${response.status} - ${errorText}`);
+                }
+
+                const data = await response.json();
+                
+                if (!data.candidates || !data.candidates[0]) {
+                    throw new Error('Unexpected API response structure');
+                }
+                
+                const reply = data.candidates[0].content.parts[0].text;
+                
+                // Add EVA's response to history
+                conversationHistory.push({
+                    role: "model",
+                    parts: [{ text: reply }]
+                });
+                
+                speak(reply);
+            } catch (error) {
+                console.error('Gemini API Error:', error);
+                speak('Sorry, I encountered an error.');
+            }
+        }
+
+        function speak(text) {
+            if (!window.speechSynthesis) {
                 return;
             }
             
-            if (currentStep >= 300) {
-                isRunning = false;
-                setTimeout(() => {
-                    alert(`⚠️ Simulation ended: Max steps reached.\n\nFires Remaining: ${fires.length}\nTotal Extinguished: ${totalExtinguished}`);
-                }, 500);
-                return;
+            // Cancel any ongoing speech
+            if (speechSynthesis.speaking) {
+                speechSynthesis.cancel();
             }
             
-            // Slow down animation to see each step clearly (like terminal output)
-            setTimeout(() => {
-                animationId = requestAnimationFrame(animate);
-            }, 250); // 4 steps per second, matching terminal speed
-        }
-
-        // Slider event listeners
-        document.getElementById('omegaSlider').addEventListener('input', function(e) {
-            omega = parseFloat(e.target.value);
-            document.getElementById('omegaValue').textContent = omega.toFixed(1);
-        });
-
-        document.getElementById('phipSlider').addEventListener('input', function(e) {
-            phip = parseFloat(e.target.value);
-            document.getElementById('phipValue').textContent = phip.toFixed(1);
-        });
-
-        document.getElementById('phigSlider').addEventListener('input', function(e) {
-            phig = parseFloat(e.target.value);
-            document.getElementById('phigValue').textContent = phig.toFixed(1);
-        });
-
-        // Button controls
-        document.getElementById('startBtn').addEventListener('click', function() {
-            if (!isRunning) {
-                isRunning = true;
-                animate();
-            }
-        });
-
-        document.getElementById('stopBtn').addEventListener('click', function() {
-            isRunning = false;
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-        });
-
-        document.getElementById('resetBtn').addEventListener('click', function() {
-            isRunning = false;
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-            currentStep = 0;
-            totalExtinguished = 0;
-            dronesDeployed = false;
-            frameCount = 0;
-            initGrid();
-            drones = [];
-            draw();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 1.0;
+            utterance.pitch = 1.2;
+            utterance.volume = 1.0;
             
-            document.getElementById('stepCount').textContent = '0';
-            document.getElementById('extinguishedCount').textContent = '0';
-            document.getElementById('diversityValue').textContent = '0.00';
-            document.getElementById('rewardValue').textContent = '0.0000';
-            document.getElementById('deployMessage').classList.remove('hidden');
-        });
-
-        // Initialize
-        initGrid();
-        draw();
-        document.getElementById('deployMessage').classList.remove('hidden');
-
-        // Generate floating drones for hero section
-        const dronesContainer = document.getElementById('floatingDrones');
-        for (let i = 0; i < 8; i++) {
-            const drone = document.createElement('div');
-            drone.className = 'absolute text-blue-400 opacity-60 float-animation';
-            drone.style.left = Math.random() * 100 + '%';
-            drone.style.top = Math.random() * 60 + '%';
-            drone.style.animationDuration = Math.random() * 3 + 4 + 's';
-            drone.style.animationDelay = Math.random() * 2 + 's';
-            drone.innerHTML = '<div class="relative"><div class="w-3 h-3 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"></div><div class="absolute -top-1 -left-1 w-5 h-5 border border-blue-400 rounded-full animate-ping"></div></div>';
-            dronesContainer.appendChild(drone);
+            // Wait for voices and select a female voice
+            const voices = speechSynthesis.getVoices();
+            
+            const femaleVoice = voices.find(voice =>
+                voice.lang.startsWith('en') && voice.name.toLowerCase().includes("female")
+            ) || voices.find(voice =>
+                voice.lang.startsWith('en') && (
+                    voice.name.includes("Google") || 
+                    voice.name.includes("Samantha") || 
+                    voice.name.includes("Jenny") ||
+                    voice.name.includes("Zira") ||
+                    voice.name.includes("Susan")
+                )
+            );
+            
+            if (femaleVoice) {
+                utterance.voice = femaleVoice;
+            }
+            
+            window.speechSynthesis.speak(utterance);
         }
 
-        // Parallax effect on hero content
-        const heroContent = document.getElementById('heroContent');
-        window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
-            heroContent.style.transform = 'translateY(' + scrollY * 0.5 + 'px)';
-            heroContent.style.opacity = 1 - scrollY / 500;
-        });
+        // Ensure voices are loaded
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = () => {
+                speechSynthesis.getVoices();
+            };
+        }
     </script>
 </body>
 </html>
